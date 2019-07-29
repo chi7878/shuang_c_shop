@@ -2,9 +2,9 @@
     <div>
         <div class="backstage_body text-center">
             <form class="form-signin">
-                <h1 class="h3 mb-3 font-weight-normal">後台登入</h1>
+                <h1 class="h3 mb-3 font-weight-normal text-primary">後台登入</h1>
                 <div class="emailenter_box text-left mt-3">
-                    <label for="inputEmail" class="">電子信箱</label>
+                    <label for="inputEmail" class="text-primary">電子信箱</label>
                     <input
                         type="email"
                         id="inputEmail"
@@ -17,7 +17,7 @@
                     />
                 </div>
                 <div class="password_box text-left">
-                    <label for="inputPassword" class="mt-3">密碼</label>
+                    <label for="inputPassword" class="mt-3 text-primary">密碼</label>
                     <input
                         type="password"
                         id="inputPassword"

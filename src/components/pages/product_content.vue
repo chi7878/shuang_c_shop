@@ -9,14 +9,14 @@
     <div class="loading_box" v-if="loading ==true">
               <img src="../../assets/loading.gif" width="250px" alt="">
     </div>
-    <div class="alert_message " :class="{alert_message_anim:cart_anim == true}">
+    <div class="alert_message " :class="{alert_message_anim:cart_anim == true}" v-if="cart_anim ==true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-grin-squint"></i></p>
         <p>新增至購物車囉!</p>
       </div>
     </div>
 
-    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}">
+    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim ==true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-dizzy"></i></p>
         <p>錯誤!請重新整理</p>
@@ -38,8 +38,11 @@
               {{item.product.title}}
               <span>{{item.qty}}{{item.product.unit}}</span>
             </p>
-            <p class="text-right m-0">{{item.product.price *item.product.num |currency}}</p>
-            <a href="" class="text-black-50 m-0" @click.prevent="cart_del(item)">刪除</a>
+            <p class="text-right m-0">{{item.final_total |currency}}</p>
+            <a href="" class="text-black-50 m-0" @click.prevent="cartDel(item)">              
+              <span v-if="del_laoding == false">刪除</span>
+              <span v-else><i class="fas fa-circle-notch fa-spin"></i></span>
+              </a>
           </li>
           
           <li class="py-1 text-center" v-if="cart_data_lsit.length > 4">
@@ -55,12 +58,12 @@
     <div class="container-fluid">
             <div class="row product_container justify-content-between align-items-center">
                 <div class="col-lg-5 product_picture">
-                    <a href="" class="text-black-50" style="font-size: 20px;" @click.prevent="Previous"><i class="fas fa-angle-left mr-1"></i>BACK</a>
+                    <a href="" class="text-black-50" style="font-size: 20px;" @click.prevent="previousPage"><i class="fas fa-angle-left mr-1"></i>BACK</a>
                     <img :src="product.imageUrl" width="400px"  alt="">
                 </div>
                 <div class="col-lg-7 product_text_box">
-                    <div class="product_text d-flex flex-column p-5">
-                        <h2>{{product.title}}</h2>
+                    <div class="product_text d-flex flex-column p-5 text-primary">
+                        <h2 class="">{{product.title}}</h2>
                         <div class="mb-5">
                             <a class="tag rounded-pill">{{product.category}}</a>
                         </div>
@@ -68,14 +71,17 @@
                         <p>
                             {{product.description}}
                         </p >
-                        <p class="price mb-3">{{product.origin_price |currency}}<span class="text-danger">{{product.price|currency}}</span></p>
+                        <p class="price mb-3 text-primary">{{product.origin_price |currency}}<span class="text-danger">{{product.price|currency}}</span></p>
                         <div class="d-inline-flex flex-wrap justify-content-between">
                             <div class="d-flex border rounded-pill num_btn my-1">
-                                <a href="" class="px-3 py-2 border-right" @click.prevent="num_event">-</a>
+                                <a href="" class="px-3 py-2 border-right" @click.prevent="numEnd">-</a>
                                 <p class="px-3 py-2">{{num}}</p>
                                 <a href="" class="px-3 py-2 border-left" @click.prevent="num+=1">+</a>
                             </div>
-                            <a href="" class="btn cart rounded-pill px-3 my-1" @click.prevent="add_cart">加入購物車</a>
+                            <a href="" class="btn cart rounded-pill px-3 my-1" @click.prevent="cartAdd">
+                              <span v-if="add_laoding == false">加入購物車</span>
+                              <span v-else>正在加入中</span>
+                            </a>
                         </div>
                     </div>
                     
@@ -84,6 +90,32 @@
             
             
         </div>
+        <div class="mt-4 like_box d-flex justify-content-center flex-column align-items-center">
+          <p class="text-primary h4 like_title "><i class="far fa-thumbs-up"></i>店長推推商品<i class="far fa-thumbs-up"></i></p>
+          <ul class="hot_list d-flex justify-content-center flex-wrap">
+            <li class="mx-4" v-for="item in products_data_list.slice(0,4)" :key="item.id">
+              <router-link :to="'/productcontent/'+item.id">
+                <div class="card" style="width: 18rem;background-color:#2d2d2d20">
+                  <img
+                    :src="item.imageUrl"
+                    class="card_img"
+                    width="150px"
+                    alt="..."
+                  />
+                  <div class="card-body text-center" style="margin-top: 120px;">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p
+                      class="card-text mb-3 text-danger"
+                      style="text-decoration: line-through"
+                    >{{item.origin_price | currency}}</p>
+                    <a class="btn btn-light rounded-pill px-5 py-0">more</a>
+                  </div>
+                </div>
+              </router-link>
+            </li>
+          </ul>
+        </div>
+
         <indexfooter></indexfooter>
     </div>
 </template>
@@ -102,27 +134,34 @@ export default {
       cart_data_lsit:[],
       cart_anim:false,
       error_anim:false,
+      del_laoding:false,
+      add_laoding:false,
+      products_data_list:[],
     };
   },
-  filters:{
-    currency:function(item){
-        const n = Number(item);
-        return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
-          const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c);
-        return currency;
-        })}`;
-    },
-  },
   methods:{
-    num_event:function(){
+    productsData: function() {
+      const all_api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/products/all`;
+      const vm = this;
+      vm.is_loading = true;
+      this.$http.get(all_api).then(response => {
+        if (response.data.success) {
+          vm.products_data_list = response.data.products;
+        } else {
+          vm.error_anim = true;
+        }
+      });
+    },
+    numEnd:function(){
       if(this.num >0){
         this.num-=1
       }
     },
-    product_event:function(){
+    productData:function(){
       const id = this.$route.params.id;
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/product/${id}`;
       const vm = this;
+      vm.animLoading();
 
       this.$http.get(api).then(response => {
         if(response.data.success){ 
@@ -134,12 +173,19 @@ export default {
         }
       });
     },
-    Previous:function(){
+    animLoading:function(){
+      const vm = this;
+      setTimeout(function(){
+          vm.loading = false;
+        },1000);
+    },
+    previousPage:function(){
       this.$router.push("/product");
     },
-    add_cart:function(){
+    cartAdd:function(){
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/cart`;
       const vm = this;
+        vm.add_laoding = true;
       const cart_data = {
         product_id:vm.$route.params.id,
         qty:vm.num,
@@ -148,22 +194,24 @@ export default {
       this.$http.post(api,{data:cart_data}).then(response => {
         if(response.data.success){ 
           vm.cart_anim = true;
-          vm.anim_close();
-          vm.cart_data();
+          vm.animClose();
+          vm.cartData();
+          vm.add_laoding = false;
         }else{
           vm.error_anim =true;
+          vm.add_laoding = false;
         }
       });
 
       
     },
-    anim_close:function(){
+    animClose:function(){
       const vm = this;
       setTimeout(function(){
           vm.cart_anim = false;
         },1000);
     },
-    cart_data:function(){
+    cartData:function(){
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/cart`;
       const vm = this;
 
@@ -175,23 +223,26 @@ export default {
         }
       });
     },
-    cart_del:function(cart_product){
+    cartDel:function(cart_product){
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/cart/${cart_product.id}`;
       const vm = this;
-
+      vm.del_laoding = true;
       this.$http.delete(api).then(response => {
         if (response.data.success) {
-          vm.cart_data();
+          vm.cartData();
+          vm.del_laoding = false;
         } else {
-          vm.error_anim =true;
+          vm.error_anim = true;
+          vm.del_laoding = false;
         }
       });
-    }
+    },
   },
   
   created(){
-    this.product_event();
-    this.cart_data();
+    this.productData();
+    this.cartData();
+    this.productsData();
   },
   components: {
     indexnavbar,

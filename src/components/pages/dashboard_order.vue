@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}">
+    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-dizzy"></i></p>
         <p>錯誤!請重新整理或重新登入</p>
@@ -16,7 +16,7 @@
             <p class="h5 px-3 py-2 title_text">產品訂單</p>
           </div>
           <div class="table-responsive mt-5 px-5">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm table_lsit">
               <thead>
                 <tr>
                   <th width="80" class="text-center">狀態</th>
@@ -26,11 +26,6 @@
                   <th width="100" class="text-center">商品數量</th>
                   <th width="130" class="text-center">總金額</th>
                   <th width="130" class="text-center"></th>
-                </tr>
-                <tr>
-                  <th colspan="6" class="text-center">              
-                    <p class="h4 text-black-50" v-if="sm_loading == false"><i class="fas fa-circle-notch fa-spin"></i></p>
-                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -45,10 +40,11 @@
                   <td class="text-center">{{Object.keys(item.products).length}}個商品</td>
                   <td class="text-center">{{item.total |currency}}</td>
                   <td class="text-center">
-                    <a href="#" class="btn btn-outline-primary btn-sm" @click.prevent="order_detailed(item.id)">詳細資訊</a>
+                    <a href="#" class="btn btn-outline-primary btn-sm" @click.prevent="orderDetailed(item.id)">詳細資訊</a>
                   </td>
                 </tr>
               </tbody>
+              <p class="h4 text-black-50 loading_list" v-if="sm_loading == false"><i class="fas fa-circle-notch fa-spin"></i></p>
             </table>
             <nav aria-label="Page navigation example" v-if="pages.total_pages >1">
               <ul class="pagination ">
@@ -166,17 +162,8 @@ export default {
       error_anim:false,
     };
   },
-  filters:{
-    currency:function(item){
-        const n = Number(item);
-        return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
-          const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c);
-        return currency;
-        })}`;
-    },
-  },
   methods: {
-    order_data: function(page = 1) {
+    orderData: function(page = 1) {
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/admin/orders?page=${page}`;
       const vm = this;
 
@@ -192,7 +179,7 @@ export default {
         
       });
     },
-    order_detailed:function(id){
+    orderDetailed:function(id){
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/order/${id}`;
       const vm = this;
       vm.sm_loading =false;
@@ -212,7 +199,7 @@ export default {
     dashboardmenu
   },
   created() {
-    this.order_data();
+    this.orderData();
   }
 };
 </script>

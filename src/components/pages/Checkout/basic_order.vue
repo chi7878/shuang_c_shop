@@ -93,19 +93,11 @@ export default {
           address: ""
         },
         message:"",
-        sm_loading:false,
-      }
+      },
+      sm_loading:false,
     };
   },
-  filters:{
-    currency:function(item){
-        const n = Number(item);
-        return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
-          const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c);
-        return currency;
-        })}`;
-    },
-  },
+
   methods:{
     oreder_post:function(){ 
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/order`;
@@ -126,6 +118,8 @@ export default {
             vm.sm_loading = false;
           }
         })
+        }else{
+          vm.sm_loading = false;
         }
       });
 

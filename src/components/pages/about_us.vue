@@ -1,12 +1,12 @@
 <template>
   <div>
     <indexnavbar></indexnavbar>
-    <div class="contianer_fluid">
-            <div class="about_bg_img">
+    <div class="container-fluid">
+            <div class="about_bg_img text-primary">
                 <p>品牌故事</p>
             </div>
             
-            <div class="text-center about_text">
+            <div class="text-center about_text text-primary">
                 <p>全台遍佈高達100家門市，擁有50年信譽<br>
                     秉持著讓全球每個人都能享受各個品牌科技所帶來的美好生活<br>
                     與不一樣的生活,致力於讓全台每個人都能享用優秀品質與良好<br>

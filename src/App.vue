@@ -1,23 +1,24 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view  :key="$route.fullPath"/>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'App'
-}
+  name: "App"
+};
 </script>
 
 <style lang="scss">
-  @import "./assets/all.scss";
-  
+@import "./assets/all.scss";
 </style>
 
 <style>
-  @import "./assets/style.css";
-  body,html {
-      font-family: "Noto Sans TC", sans-serif;
-  }
+@import "./assets/style.css";
+body,
+html {
+  font-family: "Noto Sans TC", sans-serif;
+}
 </style>

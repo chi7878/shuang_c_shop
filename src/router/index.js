@@ -8,6 +8,10 @@ import product from '@/components/pages/product'
 import news from '@/components/pages/news'
 import aboutus from '@/components/pages/about_us'
 import productcontent from '@/components/pages/product_content'
+import returnpackage from '@/components/pages/return_package'
+import shopping from '@/components/pages/shopping'
+import faq from '@/components/pages/faq'
+import contactmethod from '@/components/pages/contact_method'
 
 import dashoard from '@/components/pages/Dashboard'
 import dashboardcoupon from '@/components/pages/dashboard_coupon'
@@ -37,6 +41,9 @@ export default new Router({
       path: '/product',
       name: 'product',
       component: product,
+      query:{
+        class:" ",
+      },
     },
     {
       path: '/member_sign',
@@ -108,6 +115,26 @@ export default new Router({
           component: checkoutfinish
         },
       ]
-    }
+    },
+    {
+      path:'/returnpackage',
+      name:'returnpackage',
+      component:returnpackage
+    },
+    {
+      path:'/shopping',
+      name:'shopping',
+      component:shopping
+    },
+    {
+      path:'/faq',
+      name:'faq',
+      component:faq
+    },
+    {
+      path:'/contactmethod',
+      name:'contactmethod',
+      component:contactmethod
+    },
   ]
 })

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}">
+    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-dizzy"></i></p>
         <p>錯誤!請重新整理或重新登入</p>
@@ -29,7 +29,7 @@
           </div>
           <div class="table-responsive mt-5 px-5">
             <a href="#" class="text-right btn btn-outline-dark mb-4" @click.prevent="open_coupon_model(true)">建立優惠券</a>
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm table_lsit">
               <thead>
                 <tr>
                   <th>名稱</th>
@@ -38,11 +38,6 @@
                   <th width="140" class="text-center">是否啟用</th>
                   <th width="130" class="text-center">編輯</th>
                   <th width="50"></th>
-                </tr>
-                <tr>
-                  <th colspan="6" class="text-center">              
-                    <p class="h4 text-black-50" v-if="sm_loading == false"><i class="fas fa-circle-notch fa-spin"></i></p>
-                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -72,6 +67,7 @@
                   </td>
                 </tr>
               </tbody>
+              <p class="h4 text-black-50 loading_list" v-if="sm_loading == false"><i class="fas fa-circle-notch fa-spin"></i></p>
             </table>
             <nav aria-label="Page navigation example" v-if="pages.total_pages >1">
               <ul class="pagination ">
@@ -196,7 +192,7 @@ export default {
     };
   },
   methods: {
-    coupon_data:function(page=1){
+    couponsData:function(page=1){
       let api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/admin/coupons?page=${page}`;
       const vm = this;
       
@@ -228,7 +224,7 @@ export default {
         this.$http.post(api,{data:vm.new_coupon}).then(response => {
           if(response.data.success){
             vm.new_coupon={};
-            vm.coupon_data();
+            vm.couponsData();
           }else{
             vm.error_anim =true;
           }
@@ -238,7 +234,7 @@ export default {
         this.$http.put(api,{data:vm.new_coupon}).then(response => {
           if(response.data.success){
             vm.new_coupon={};
-            vm.coupon_data();
+            vm.couponsData();
           }else{
             vm.error_anim =true;
           }
@@ -258,7 +254,7 @@ export default {
 
       this.$http.delete(api).then(response => {
         if(response.data.success){
-          vm.coupon_data();
+          vm.couponsData();
           vm.alert_delete = false;
         }
       })
@@ -268,7 +264,7 @@ export default {
     dashboardmenu
   },
   created() {
-    this.coupon_data();
+    this.couponsData();
   }
 };
 </script>

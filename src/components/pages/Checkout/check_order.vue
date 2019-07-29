@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}">
+    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-dizzy"></i></p>
         <p>錯誤!請重新整理</p>
@@ -94,17 +94,9 @@ export default {
       error_anim:false,
     };
   },
-  filters:{
-    currency:function(item){
-        const n = Number(item);
-        return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
-          const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c);
-        return currency;
-        })}`;
-    },
-  },
+
   methods:{
-    cart_data:function(){
+    cartsData:function(){
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/cart`;
       const vm = this;
 
@@ -124,7 +116,7 @@ export default {
 
       this.$http.delete(api).then(response => {
         if (response.data.success) {
-          vm.cart_data();
+          vm.cartsData();
         } else {
           vm.error_anim = true;
         }
@@ -136,7 +128,7 @@ export default {
 
       this.$http.post(api,{data:{code:vm.coupon}}).then(response => {
         if (response.data.success) {
-          vm.cart_data();
+          vm.cartsData();
           vm.is_coupon = true;
           vm.coupon_error_message = "已套用"
         } else {
@@ -147,7 +139,7 @@ export default {
   },
   
   created(){
-    this.cart_data();
+    this.cartsData();
   },
 };
 </script>

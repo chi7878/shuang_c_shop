@@ -29,6 +29,17 @@ router.afterEach((to,from,next) => {
   window.scrollTo(0,0);
 });
 
+Vue.filter("currency", function(item) {
+  const n = Number(item);
+  return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
+    const currency =
+      i && c !== "." && (a.length - i) % 3 === 0
+        ? `, ${c}`.replace(/\s/g, "")
+        : c;
+    return currency;
+  })}`;
+});
+
 /* eslint-disable no-new */
 new Vue({
   i18n,

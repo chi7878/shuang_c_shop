@@ -1,6 +1,6 @@
 <template>
     <div class="col-2 deashboard_menu text-center p-0 vh-100 position-relative">
-                    <img src="../../../assets/vue shop logo-03.png" width="150px" height="150px" alt="" />
+                    <img src="../../../assets/shopLogo.png" width="150px" height="150px" alt="" />
                     <div class="mt-5">
                         <p class="text-white-50 mb-4">管理員</p>
                         <ul class="nav flex-column">
@@ -22,7 +22,7 @@
                         </ul>
                     </div>
 
-                    <a href="" class="btn btn-outline-light p-0 px-4 py-1 signout position-absolute" @click.prevent="sign_out">登出</a>
+                    <a href="" class="btn btn-outline-light p-0 px-4 py-1 signout position-absolute" @click.prevent="signOut">登出</a>
                 </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
         };
     },
     methods:{
-        sign_out:function(){
+        signOut:function(){
             const api = `${process.env.HTTPAPI}/logout`;
             const vm = this;
             this.$http.post(api).then((response) =>{

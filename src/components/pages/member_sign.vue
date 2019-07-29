@@ -2,10 +2,10 @@
     <div>
         <div class="sign_body">
             <form class="form-signin text-center">
-                <img src="../../assets/vue shop logo-03.png" width="150px" height="150px" alt="img" />
-                <h1 class="h3 mb-3 font-weight-normal">會員登入</h1>
+                <img src="../../assets/shopLogo.png" width="150px" height="150px" alt="img" />
+                <h1 class="h3 mb-3 font-weight-normal text-primary">會員登入</h1>
                 <div class="emailenter_box text-left mt-3">
-                    <label for="inputEmail" class="">電子信箱</label>
+                    <label for="inputEmail" class="text-primary">電子信箱</label>
                     <input
                         type="email"
                         id="inputEmail"
@@ -16,7 +16,7 @@
                     />
                 </div>
                 <div class="password_box text-left">
-                    <label for="inputPassword" class="mt-3">密碼</label>
+                    <label for="inputPassword" class="mt-3 text-primary">密碼</label>
                     <input
                         type="password"
                         id="inputPassword"

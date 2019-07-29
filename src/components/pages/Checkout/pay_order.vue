@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- <div class="loading_box" v-if="loading ==true">
-      <img src width="250px" alt />
-    </div> -->
     <div class="order_box container-fluid">
       <div class="row justify-content-center">
         <form class="col-md-4">
@@ -105,7 +102,7 @@
             </div>
           </div>
           <div class="text-center">
-            <a href="" class="btn btn-danger" @click.prevent="order_finish">下一步-完成訂單</a>
+            <a href="" class="btn btn-danger" @click.prevent="orderFinish">下一步-完成訂單</a>
           </div>
         </form>
       </div>
@@ -122,7 +119,7 @@ export default {
     };
   },
   methods: {
-    order_data:function(){
+    ordersData:function(){
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/orders`;
       const vm = this;
 
@@ -134,7 +131,7 @@ export default {
         }
       });
     },
-    order_finish:function(){
+    orderFinish:function(){
       const api = `${process.env.HTTPAPI}/api/${process.env.PATHAPI}/pay/${this.order_id}`;
       const vm = this;
 
@@ -149,7 +146,7 @@ export default {
   },
 
   created() {
-    this.order_data();
+    this.ordersData();
   }
 };
 </script>
