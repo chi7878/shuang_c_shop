@@ -17,7 +17,6 @@ SHUANG C 電商網站
 * 會員登入
 * 購物車
 * 結帳
-* 
 
 ### 後台頁面
 * 管理者登入
@@ -27,19 +26,19 @@ SHUANG C 電商網站
 
 ## 使用技術
 
-Vue  
-Vue Cli  
-Vue-Router  
-Bootstrap  
-Axios
-Google Fonts
+ Vue  
+ Vue Cli  
+ Vue-Router  
+ Bootstrap  
+ Axios
+ Google Fonts
 
 
 ## 頁面介紹
 
 
 ### 前台網頁
-####首頁
+#### 首頁
 ![](https://i.imgur.com/oG0dVCH.png)
 
 #### 商品頁面
@@ -59,7 +58,7 @@ Google Fonts
 
 
 ### 後台網頁
-####後台介面
+#### 後台介面
 ![](https://i.imgur.com/Z9Fu9fM.png)
 
 #### 新增產品
