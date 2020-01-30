@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav
+  <header>
+    <div
       class="navbar navbar-expand-lg navbar-light pt-1 px-5 d-flex justify-content-between flex-row-reverse flex-lg-row position-fixed"
     >
       <button
@@ -17,7 +17,7 @@
       <router-link class="navbar-brand logo" to="/" >
         <img src="../../../assets/shopLogo.png" width="70px" height="70px" alt />
       </router-link>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <nav class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item mx-5">
             <router-link class="nav-link d-flex align-items-center flex-column text-primary nav-hover" to="/">
@@ -26,7 +26,7 @@
             </router-link>
           </li>
           <li class="nav-item mx-5">
-            <router-link class="nav-link d-flex align-items-center flex-column text-primary" to="/product">
+            <router-link class="nav-link d-flex align-items-center flex-column text-primary" to="/allproducts">
               全部商品
               <div class="line"></div>
             </router-link>
@@ -44,24 +44,24 @@
             </router-link>
           </li>
           <li class="nav-item mx-5 d-block d-lg-none">
-            <a class="nav-link d-flex align-items-center flex-column" href="/member_sign.html">
+            <a class="nav-link d-flex align-items-center flex-column" href="/membersign">
               會員登入
               <div class="line"></div>
             </a>
           </li>
           <li class="nav-item mx-5 d-block d-lg-none">
-            <a class="nav-link d-flex align-items-center flex-column" href="/backstage_sign.html">
+            <a class="nav-link d-flex align-items-center flex-column" href="/dashboardsign">
               後台登入
               <div class="line"></div>
             </a>
           </li>
         </ul>
-      </div>
-      <router-link to="/member_sign" class="sign rounded-circle btn d-none d-lg-block">
+      </nav>
+      <router-link to="/membersign" class="sign rounded-circle btn d-none d-lg-block">
         <span>登入</span>
       </router-link>
-    </nav>
-  </div>
+    </div>
+  </header>
 </template>
 
 <script>

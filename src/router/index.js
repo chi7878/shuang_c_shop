@@ -1,28 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
-import member_sign from '@/components/pages/member_sign'
-import backstage_sign from '@/components/pages/backstage_sign'
+import membersign from '@/components/pages/pageMemberSign'
+import dashboardsign from '@/components/pages/pageDashboardSign'
 
-import product from '@/components/pages/product'
-import news from '@/components/pages/news'
-import aboutus from '@/components/pages/about_us'
-import productcontent from '@/components/pages/product_content'
-import returnpackage from '@/components/pages/return_package'
-import shopping from '@/components/pages/shopping'
-import faq from '@/components/pages/faq'
-import contactmethod from '@/components/pages/contact_method'
+import productcontent from '@/components/pages/productContent'
+import allproducts from '@/components/pages/pageAllProducts'
+import news from '@/components/pages/pageNews'
+import aboutus from '@/components/pages/pageAboutUs'
+import returnpackage from '@/components/pages/pageReturnPackage'
+import shopping from '@/components/pages/pageShopping'
+import faq from '@/components/pages/pageFaq'
+import contactmethod from '@/components/pages/pageContactMethod'
 
-import dashoard from '@/components/pages/Dashboard'
-import dashboardcoupon from '@/components/pages/dashboard_coupon'
-import dashboardorder from '@/components/pages/dashboard_order'
+import dashoard from '@/components/dashboard/dashboardProducts'
+import dashboardcoupon from '@/components/dashboard/dashboardCoupon'
+import dashboardorder from '@/components/dashboard/dashboardOrder'
 
 
-import checkorder from '@/components/pages/Checkout/footer_and_navbar'
-import checkout from '@/components/pages/Checkout/check_order'
-import checkoutbasic from '@/components/pages/Checkout/basic_order'
-import checkoutpay from '@/components/pages/Checkout/pay_order'
-import checkoutfinish from '@/components/pages/Checkout/finish_order'
+import checkorder from '@/components/Checkout/checkOrder'
+import checkout from '@/components/Checkout/Checkout_template/order_check'
+import checkoutbasic from '@/components/Checkout/Checkout_template/order_basic'
+import checkoutpay from '@/components/Checkout/Checkout_template/order_pay'
+import checkoutfinish from '@/components/Checkout/Checkout_template/order_finish'
 
 Vue.use(Router)
 
@@ -33,85 +33,85 @@ export default new Router({
       redirect: '/'
     },
     {
-      path: '/',
-      name: 'index',
+      path:'/',
+      name:'index',
       component: index,
     },
     {
-      path: '/product',
-      name: 'product',
-      component: product,
+      path:'/allproducts',
+      name:'allproducts',
+      component: allproducts,
       query:{
         class:" ",
       },
     },
     {
-      path: '/member_sign',
-      name: 'member_sign',
-      component: member_sign
+      path:'/membersign',
+      name:'membersign',
+      component: membersign
     },
     {
-      path: '/backstage_sign',
-      name: 'backstage_sign',
-      component: backstage_sign
+      path:'/dashboardsign',
+      name:'dashboardsign',
+      component:dashboardsign
     },
     
     {
-      path: '/news',
-      name: 'news',
+      path:'/news',
+      name:'news',
       component: news
     },
     {
-      path: '/aboutus',
-      name: 'aboutus',
+      path:'/aboutus',
+      name:'aboutus',
       component: aboutus
     },
     
     {
-      path: '/productcontent/:id',
-      name: 'productcontent',
+      path:'/productcontent/:id',
+      name:'productcontent',
       component: productcontent
     },
     {
-      path: '/dashoard',
-      name: 'dashoard',
+      path:'/dashoard',
+      name:'dashoard',
       component: dashoard,
       meta:{requiresAuth: true}
     },
     {
-      path: '/dashboardcoupon',
-      name: 'dashboardcoupon',
+      path:'/dashboardcoupon',
+      name:'dashboardcoupon',
       component: dashboardcoupon,
       meta:{requiresAuth: true}
     },
     {
-      path: '/dashboardorder',
-      name: 'dashboardorder',
+      path:'/dashboardorder',
+      name:'dashboardorder',
       component: dashboardorder,
       meta:{requiresAuth: true}
     },
     {
-      path: '/checkorder',
+      path:'/checkorder',
       component: checkorder,
       children:[
         {
-          path: '',
-          name: 'checkout',
+          path:'',
+          name:'checkout',
           component: checkout
         },
         {
-          path: 'basic',
-          name: 'checkoutbasic',
+          path:'basic',
+          name:'checkoutbasic',
           component: checkoutbasic
         },
         {
-          path: 'pay',
-          name: 'checkoutpay',
+          path:'pay',
+          name:'checkoutpay',
           component: checkoutpay
         },
         {
-          path: 'finish',
-          name: 'checkoutfinish',
+          path:'finish',
+          name:'checkoutfinish',
           component: checkoutfinish
         },
       ]

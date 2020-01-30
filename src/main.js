@@ -41,10 +41,10 @@ Vue.filter("currency", function(item) {
 });
 
 /* eslint-disable no-new */
+
 new Vue({
   i18n,
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
