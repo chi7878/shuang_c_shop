@@ -18,7 +18,7 @@
         </aside>
 
         <router-link to="/checkorder" class="btn mobile_cart_btn d-block d-sm-none" v-if="cart_data_lsit.length > 0">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-cart text-white"></i>
         </router-link>
 
         <div class="cart_btn d-sm-block d-none">
@@ -59,11 +59,11 @@
                 id="carouselExampleControls"
                 class="carousel slide mb-5"
                 data-ride="carousel"
-                style="margin-top: 120px;"
+                style="margin-top: 120px"
             >
-                <div class="carousel-inner">
+                <div class="carousel-inner rounded">
                     <div class="carousel-item active">
-                        <img src="../../assets/Carousel/CarouselImage01.jpg" class="d-block w-100" alt="..." />
+                        <img src="../../assets/Carousel/CarouselImage01.jpg" class="d-block w-100 " alt="..." />
                     </div>
                     <div class="carousel-item">
                         <img src="../../assets/Carousel/CarouselImage02.jpg" class="d-block w-100" alt="..." />
@@ -97,50 +97,50 @@
                 <a
                     href="#"
                     @click.prevent="classSort('全部')"
-                    class="all_box sort_box mb-3 rounded-circle"
+                    class="all_box sort_box mb-3 mx-2 rounded-circle"
                     :class="{ sort_active: class_active == '全部' }"
                 >
-                    <img src="../../assets/ClassIcon/classIconAll.png" width="130px" height="130px" alt="img" />
+                    <img src="../../assets/ClassIcon/classIconAll.png" class="w-100" alt="img" />
                 </a>
                 <a
                     href="#"
                     @click.prevent="classSort('配件')"
-                    class="parts_box sort_box mb-3 rounded-circle"
+                    class="parts_box sort_box mb-3 mx-2 rounded-circle"
                     :class="{ sort_active: class_active == '配件' }"
                 >
-                    <img src="../../assets/ClassIcon/classIconAccessories.png" width="130px" height="130px" alt="img" />
+                    <img src="../../assets/ClassIcon/classIconAccessories.png" class="w-100" alt="img" />
                 </a>
                 <a
                     href="#"
                     @click.prevent="classSort('手機')"
-                    class="phone_box sort_box mb-3 rounded-circle"
+                    class="phone_box sort_box mb-3 mx-2 rounded-circle"
                     :class="{ sort_active: class_active == '手機' }"
                 >
-                    <img src="../../assets/ClassIcon/classIconPhone.png" width="130px" height="130px" alt="img" />
+                    <img src="../../assets/ClassIcon/classIconPhone.png" class="w-100" alt="img" />
                 </a>
                 <a
                     href="#"
                     @click.prevent="classSort('穿戴')"
-                    class="watch_box sort_box mb-3 rounded-circle"
+                    class="watch_box sort_box mb-3 mx-2 rounded-circle"
                     :class="{ sort_active: class_active == '穿戴' }"
                 >
-                    <img src="../../assets/ClassIcon/classIconWear.png" width="130px" height="130px" alt="img" />
+                    <img src="../../assets/ClassIcon/classIconWear.png" class="w-100" alt="img" />
                 </a>
                 <a
                     href="#"
                     @click.prevent="classSort('耳機')"
-                    class="headset_box sort_box mb-3 rounded-circle"
+                    class="headset_box sort_box mb-3 mx-2 rounded-circle"
                     :class="{ sort_active: class_active == '耳機' }"
                 >
-                    <img src="../../assets/ClassIcon/classIconHeadset.png" width="130px" height="130px" alt="img" />
+                    <img src="../../assets/ClassIcon/classIconHeadset.png" class="w-100" alt="img" />
                 </a>
                 <a
                     href="#"
                     @click.prevent="classSort('生活')"
-                    class="life_box sort_box mb-3 rounded-circle"
+                    class="life_box sort_box mb-3 mx-2 rounded-circle"
                     :class="{ sort_active: class_active == '生活' }"
                 >
-                    <img src="../../assets/ClassIcon/classIconLift.png" width="130px" height="130px" alt="img" />
+                    <img src="../../assets/ClassIcon/classIconLift.png" class="w-100" alt="img" />
                 </a>
             </nav>
 
@@ -232,6 +232,8 @@ export default {
     },
     methods: {
         productData: function(page = 1) {
+
+            //get allproducts data
             const all_api = () => {
                 return vm.$http.get(`${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/products/all`);
             };
@@ -257,8 +259,7 @@ export default {
 
                             vm.product_data_class = pagedata.data.products;
                             vm.product_data_list = pagedata.data.products;
-														vm.pages = pagedata.data.pagination;
-														console.log( pagedata.data)
+                            vm.pages = pagedata.data.pagination;
                         } else {
                             vm.error_anim = true;
                         }
@@ -270,6 +271,8 @@ export default {
             vm.animLoading();
         },
         animLoading: function() {
+
+            //loading animation
             const vm = this;
             setTimeout(function() {
                 vm.is_loading = false;
@@ -277,6 +280,8 @@ export default {
             }, 1000);
         },
         classSort: function(product_class) {
+
+            //sort products data
             const data = this.product_data_all;
 
             switch (product_class) {
@@ -333,6 +338,8 @@ export default {
             }
         },
         cartData: function() {
+
+            //carts data
             const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/cart`;
             const vm = this;
             this.$http
@@ -349,6 +356,8 @@ export default {
                 });
         },
         cartDelete: function(cart_product) {
+
+            //delete cart
             const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/cart/${cart_product.id}`;
             const vm = this;
             vm.del_loading = true;

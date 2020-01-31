@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <main>
     <indexnavbar></indexnavbar>
     <div class="container-fluid">
-      <div class="about_bg_img shopping_bg_img text-light">
-        <p>商品購物須知</p>
-      </div>
+      <section class="about_bg_img shopping_bg_img text-light">
+        <h1>商品購物須知</h1>
+      </section>
 
-      <div class="text-left about_text text-primary w-75 container">
+      <article class="text-left about_text text-primary w-75 container">
         <p >
           <br>於網路商店購物消費時，選擇付款方式後，須於三日內付款完成，超過三日未付款完成，即取消訂單
           <br>
@@ -37,10 +37,10 @@
           <br>
           <br>因電腦螢幕顯色設定不同，所顯示之商品顏色與實際會有些許色差。敬請見諒
         </p>
-      </div>
+      </article>
     </div>
     <indexfooter></indexfooter>
-  </div>
+  </main>
 </template>
 
 <script>

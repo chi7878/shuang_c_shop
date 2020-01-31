@@ -1,15 +1,14 @@
 <template>
-  <div>
+  <main>
     <indexnavbar></indexnavbar>
     <div class="container-fluid">
-            <div class="news_bg_img text-primary">
-                <p>最新消息</p>
-            </div>
-            
-            
+            <section class="news_bg_img text-primary">
+                <h1>最新消息</h1>
+            </section>
+
         </div>
 
-        <div class="news_content ">
+        <article class="news_content ">
             
                 <ul class="news_list news_ul p-5">
                     <li class="d-flex justify-content-around mb-5 news_class">    
@@ -43,9 +42,9 @@
                     </li>
                     
                 </ul>
-        </div>
+        </article>
         <indexfooter></indexfooter>
-  </div>
+  </main>
 </template>
 
 <script>

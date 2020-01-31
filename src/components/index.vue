@@ -21,8 +21,8 @@
             </article>
         </main>
 
-        <article class="container-fluid my-5">
-            <ul class="row justify-content-center px-lg-0 px-5">
+        <section class="container-fluid my-5">
+            <ul class="row justify-content-center px-lg-0 px-md-5 px-3">
                 <li class="col-lg-3 col-12 class_box w-100 mb-4 mx-5">
                     <router-link :to="{ name: 'allproducts', query: { class: '手機' } }" class="d-flex btn">
                         <div class="class_img class_img_3c"></div>
@@ -51,23 +51,23 @@
                     </router-link>
                 </li>
             </ul>
-        </article>
+        </section>
 
-        <article class="hot_container container-fluid mb-5">
+        <section class="hot_container container-fluid mb-5">
             <div class="row align-items-center align-items-stretch">
                 <div class="col-lg-3 col-0 p-0">
                     <div class="hot_img"></div>
                 </div>
                 <div class="col-lg-9 col-12">
                     <div class="hot_title_box pl-2 ">
-                        <p class="hot_title_ch h1 m-0 text-primary">熱門商品</p>
+                        <h1 class="hot_title_ch  m-0 text-primary">熱門商品</h1>
                         <p class="hot_title_en text-small text-black-50">hot product</p>
                     </div>
 
                     <ul class="hot_list d-flex justify-content-center flex-wrap">
-                        <li class="mx-4">
+                        <li class="mx-1 mx-md-4">
                             <router-link to="/productcontent/-Li3ug7PpOXsVMUzfJHo">
-                                <div class="card" style="width: 15rem;">
+                                <div class="card " >
                                     <img
                                         src="../assets/product/HotProduct01.png"
                                         class="card_img"
@@ -84,9 +84,9 @@
                                 </div>
                             </router-link>
                         </li>
-                        <li class="mx-4">
+                        <li class="mx-1 mx-md-4">
                             <router-link to="/productcontent/-LiJGtR-6sLDIek3r1bd">
-                                <div class="card" style="width: 15rem;">
+                                <div class="card " >
                                     <img
                                         src="../assets/product/HotProduct02.png"
                                         class="card_img"
@@ -103,9 +103,9 @@
                                 </div>
                             </router-link>
                         </li>
-                        <li class="mx-4">
+                        <li class="mx-1 mx-md-4">
                             <router-link to="/productcontent/-LiJGwKtPuvw82bExub_">
-                                <div class="card" style="width: 15rem;">
+                                <div class="card " >
                                     <img
                                         src="../assets/product/HotProduct03.png"
                                         class="card_img"
@@ -122,9 +122,9 @@
                                 </div>
                             </router-link>
                         </li>
-                        <li class="mx-4">
+                        <li class="mx-1 mx-md-4">
                             <router-link to="/productcontent/-Ljylaq-HYasQjdq0jy2">
-                                <div class="card" style="width: 15rem;">
+                                <div class="card " >
                                     <img
                                         src="../assets/product/HotProduct04.png"
                                         class="card_img"
@@ -144,10 +144,10 @@
                     </ul>
                 </div>
             </div>
-        </article>
+        </section>
 
-        <article class="three_offer_box d-flex flex-column align-items-center mx-5 text-primary">
-            <div class="offer_title h1 mb-4">三大優惠</div>
+        <section class="three_offer_box d-flex flex-column align-items-center mx-5 text-primary">
+            <h1 class="offer_title h1 mb-4">三大優惠</h1>
             <div class="offer_content text-center my-2">
                 <img src="../assets/ShopOffer/shopOfferImg01.png" width="150px" height="150px" alt="img" />
                 <p class="h5">全商品通通免運費免手續費</p>
@@ -162,17 +162,17 @@
                 <img src="../assets/ShopOffer/shopOfferImg03.png" width="150px" height="150px" alt="img" />
                 <p class="h5">全部商品全球超級保固1年</p>
             </div>
-        </article>
+        </section>
 
-        <article class="email_box d-flex flex-column align-items-center justify-content-center mt-5 mx-auto">
-            <p class="h2 mb-5 text-primary">獲得最新優惠與活動</p>
+        <section class="email_box d-flex flex-column align-items-center justify-content-center mt-5 mx-auto">
+            <h1 class="h2 mb-5 text-primary">獲得最新優惠與活動</h1>
             <div class="input-group" style="width: 50%">
                 <input type="email" class="form-control p-3" />
                 <div class="input-group-prepend">
                     <a href class="btn btn-primary border-0" style="border-radius:0 50px 50px 0;">發送</a>
                 </div>
             </div>
-        </article>
+        </section>
         <indexfooter></indexfooter>
     </div>
 </template>

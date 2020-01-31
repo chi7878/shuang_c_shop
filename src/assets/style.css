@@ -314,6 +314,14 @@ ul {
     box-shadow: #6d6d6d50 0px 0px 10px 0.5px;
     transition: 0.3s all;
 }
+
+@media (max-width:768px){
+    .sort_list .sort_box {
+        flex-basis:25%;
+
+    }
+}
+
 .sort_list .sort_box:hover {
     background-color: #eaeaea;
     box-shadow: #6d6d6d50 0px 0px 10px 0.8px;
@@ -644,7 +652,6 @@ ul {
 }
 
 .product_text_box .price{
-    margin-top: 150px;
     font-size: 44px;
     
 }
@@ -831,11 +838,6 @@ ul {
     font-size: 30px;
     font-weight: 700;
     letter-spacing: 8px;
-}
-
-
-.carousel-inner{
-    border-radius: 80px;
 }
 
 .carousel_next,.carousel_prev{

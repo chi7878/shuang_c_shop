@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="sign_body">
+    <main>
+        <section class="sign_body">
             <form class="form-signin text-center">
                 <img src="../../assets/shopLogo.png" width="150px" height="150px" alt="img" />
                 <h1 class="h3 mb-3 font-weight-normal text-primary">會員登入</h1>
@@ -28,8 +28,8 @@
                 <button class="btn btn-primary btn-block my-5 sign_btn w-50 mx-auto" type="submit">登入</button>
                 <router-link to="/dashboardsign" class="btn text-black-50 border-bottom p-0">後台登入</router-link>
             </form>
-        </div>
-    </div>
+        </section>
+    </main>
 </template>
 
 <script>

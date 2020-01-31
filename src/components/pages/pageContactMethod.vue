@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <main>
     <indexnavbar></indexnavbar>
-    <div class="container-fluid">
+    <section class="container-fluid">
       <div class="about_bg_img contactmethod_bg_img text-light">
-        <p>聯絡我們</p>
+        <h1>聯絡我們</h1>
       </div>
 
-      <div class="text-center about_text text-primary">
+      <article class="text-center about_text text-primary">
         <p class>
             <br>-電話-
             <br>0981010259
@@ -15,10 +15,10 @@
             <br>-信箱-
             <br>percy860407@gmail.com
         </p>
-      </div>
-    </div>
+      </article>
+    </section>
     <indexfooter></indexfooter>
-  </div>
+  </main>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="backstage_body text-center">
+    <main>
+        <section class="backstage_body text-center">
             <form class="form-signin">
                 <h1 class="h3 mb-3 font-weight-normal text-primary">後台登入</h1>
                 <div class="emailenter_box text-left mt-3">
@@ -33,8 +33,8 @@
                     <span v-else><i class="fas fa-circle-notch fa-spin"></i></span>
                     </button>
             </form>
-        </div>
-    </div>
+        </section>
+    </main>
 </template>
 
 <script>

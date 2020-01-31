@@ -44,16 +44,16 @@
             </router-link>
           </li>
           <li class="nav-item mx-5 d-block d-lg-none">
-            <a class="nav-link d-flex align-items-center flex-column" href="/membersign">
+            <router-link class="nav-link d-flex align-items-center flex-column" to="/membersign">
               會員登入
               <div class="line"></div>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item mx-5 d-block d-lg-none">
-            <a class="nav-link d-flex align-items-center flex-column" href="/dashboardsign">
+            <router-link class="nav-link d-flex align-items-center flex-column" to="/dashboardsign">
               後台登入
               <div class="line"></div>
-            </a>
+            </router-link>
           </li>
         </ul>
       </nav>
