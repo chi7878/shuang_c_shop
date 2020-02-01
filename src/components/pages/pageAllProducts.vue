@@ -150,21 +150,21 @@
             >
                 商品陸續上架中...
             </p>
-            <ul class="row product_list justify-content-center" v-if="is_loading == false">
-                <li class="col-lg-3 col-sm-6" v-for="item in product_data_class" :key="item.key">
+            <ul class="row product_list justify-content-around card-group" v-if="is_loading == false">
+                <li class="col-lg-2 col-md-4 col-6 mx-lg-1 mx-0" style="margin-bottom:100px" v-for="item in product_data_class" :key="item.key">
                     <router-link class="text-dark" href="#" :to="'/productcontent/' + item.id">
-                        <div class="card border-0">
-                            <img :src="item.imageUrl" class="card_img" width="180px" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title mb-0">{{ item.title }}</h5>
+                        <div class="card border-0 h-100">
+                            <img :src="item.imageUrl" class="card_img" width="140px" alt="..." />
+                            <div class="card-body position-relative">
+                                <h6 class="card-title mb-0">{{ item.title }}</h6>
                                 <p class="mb-3 text-black-50">{{ item.category }}</p>
-                                <p class="card-text mb-3">
-                                    <span class="text-danger" style="text-decoration: line-through">{{
+                                <div class="card-text mb-3 d-flex flex-wrap">
+                                    <p class="text-danger" style="text-decoration: line-through">{{
                                         item.origin_price | currency
-                                    }}</span>
-                                    <span class="h4 text-primary">{{ item.price | currency }}</span>
-                                </p>
-                                <div class="text-right">
+                                    }}</p>
+                                    <p class="h5 text-primary">{{ item.price | currency }}</p>
+                                </div>
+                                <div class="text-right position-absolute" style="bottom:10px;right:15px">
                                     <a href="#" class="text-info">更多資訊..</a>
                                 </div>
                             </div>
@@ -227,7 +227,6 @@ export default {
             is_loading: false,
             error_anim: false,
             del_loading: false,
-            first_page: false,
         };
     },
     methods: {
@@ -245,9 +244,8 @@ export default {
             const vm = this;
             vm.is_loading = true;
 
-            if (vm.$route.query.class != undefined && vm.first_page == false) {
+            if (vm.$route.query.class != undefined ) {
                 vm.class_active = vm.$route.query.class;
-                vm.first_page = true;
             }
 
             vm.$http

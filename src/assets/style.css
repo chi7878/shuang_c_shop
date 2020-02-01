@@ -344,14 +344,12 @@ ul {
 
 
 .product_list img {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -70px;
+    margin:auto;
+    margin-top: -50px;
     transition: 0.3s all;
 }
 .product_list .card:hover .card_img {
-    top: -100px;
+    
 }
 
 .product_list .card:hover {
@@ -363,9 +361,10 @@ ul {
 }
 
 .product_list .card-body {
-    margin-top: 200px;
     background-color: white;
     border-radius: 0 0 20px 20px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 .product_list a:hover {
     text-decoration: none;
