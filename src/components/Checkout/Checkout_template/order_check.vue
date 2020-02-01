@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
+    <section class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-dizzy"></i></p>
         <p>錯誤!請重新整理</p>
       </div>
-    </div>
+    </section>
 
-    <div class="loading_box" v-if="loading ==true">
+    <aside class="loading_box" v-if="loading ==true">
               <img src="" width="250px" alt="">
-    </div>
+    </aside>
     <div class="order_box container-fluid">
             <div class=" row justify-content-center">
                 <form class="col-md-4 ">
@@ -30,9 +30,9 @@
                     <p class="text-center order_title mb-2">訂單確認</p>
 
                     <ul class="cart_click_lsit">
-                        <li class="py-2 d-flex" v-for="item in cart_data_lsit.slice(0,4)" :key="item.id">
-                            <img :src="item.product.imageUrl" width="80px" alt="">
-                            <div class="flex-grow-1 ml-5 pt-3">
+                        <li class="py-2  d-flex flex-column flex-sm-row" v-for="item in cart_data_lsit.slice(0,4)" :key="item.id">
+                            <img :src="item.product.imageUrl" class="order_img" alt="">
+                            <div class="flex-grow-1 ml-sm-5 ml-0 pt-3">
                               <p class="d-flex justify-content-between mb-2">
                                 {{item.product.title}} 
                                 <span>{{item.qty}} {{item.product.unit}} </span>

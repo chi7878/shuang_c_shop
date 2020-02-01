@@ -3,7 +3,7 @@
         <indexnavbar></indexnavbar>
         <div class="container-fluid">
             <section class="about_bg_img return_bg_img text-primary">
-                <h1>商品退換貨須知</h1>
+                <p>商品退換貨須知</p>
             </section>
 
             <article class="text-left about_text text-primary w-75 container">

@@ -2,6 +2,3 @@
 module.exports={
     publicPath:'./',
 }
-
-
-//sdsdsdsd

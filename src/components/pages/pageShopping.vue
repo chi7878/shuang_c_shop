@@ -3,7 +3,7 @@
     <indexnavbar></indexnavbar>
     <div class="container-fluid">
       <section class="about_bg_img shopping_bg_img text-light">
-        <h1>商品購物須知</h1>
+        <p>商品購物須知</p>
       </section>
 
       <article class="text-left about_text text-primary w-75 container">

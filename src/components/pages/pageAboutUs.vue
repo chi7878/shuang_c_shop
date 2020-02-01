@@ -3,7 +3,7 @@
     <indexnavbar></indexnavbar>
     <div class="container-fluid">
             <section class="about_bg_img text-primary">
-                <h1>品牌故事</h1>
+                <p>品牌故事</p>
             </section>
             
             <article class="text-center about_text text-primary">

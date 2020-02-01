@@ -3,7 +3,7 @@
     <indexnavbar></indexnavbar>
     <section class="container-fluid">
       <div class="about_bg_img contactmethod_bg_img text-light">
-        <h1>聯絡我們</h1>
+        <p>聯絡我們</p>
       </div>
 
       <article class="text-center about_text text-primary">

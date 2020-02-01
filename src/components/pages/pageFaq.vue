@@ -3,7 +3,7 @@
     <indexnavbar></indexnavbar>
     <div class="container-fluid">
             <section class="about_bg_img faq_bg_img text-light">
-                <h1>常見問題</h1>
+                <p>常見問題</p>
             </section>
             
             <article class="text-left about_text text-primary w-75 container">

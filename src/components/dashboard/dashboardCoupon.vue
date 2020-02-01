@@ -22,12 +22,12 @@
     <div class="container-fluid">
       <div class="row">
         <dashboardmenu></dashboardmenu>
-        <div class="col-10 deashboard_content pt-5 pl-5">
-          <div class="text-content d-flex align-items-center pb-3">
-            <p class="h1 mr-3">後台管理</p>
+        <div class="col-12 col-sm-10 deashboard_content pt-5 px-1 pl-sm-5">
+          <div class="text-content d-flex  flex-column flex-sm-row align-items-center pb-3">
+            <h1 class="mr-3">後台管理</h1>
             <p class="h5 px-3 py-2 title_text">優惠券</p>
           </div>
-          <div class="table-responsive mt-5 px-5">
+          <div class="table-responsive mt-5 px-0 px-sm-5">
             <a href="#" class="text-right btn btn-outline-dark mb-4" @click.prevent="open_coupon_model(true)">建立優惠券</a>
             <table class="table table-striped table-sm table_lsit">
               <thead>
