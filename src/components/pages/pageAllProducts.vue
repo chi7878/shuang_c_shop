@@ -2,7 +2,7 @@
     <div>
         <indexnavbar></indexnavbar>
         <aside class="loading_box" v-if="is_loading == true" style="background-color:#ffffff30">
-            <img src="../../assets/loading.gif" width="250px" alt="" />
+            <img src="../../assets/loading.gif" alt="" />
         </aside>
         <aside
             class="alert_message_error"
@@ -93,55 +93,57 @@
                 </a>
             </section>
 
-            <nav class="sort_list d-flex justify-content-between align-items-center flex-wrap">
-                <a
-                    href="#"
-                    @click.prevent="classSort('全部')"
-                    class="all_box sort_box mb-3 mx-2 rounded-circle"
-                    :class="{ sort_active: class_active == '全部' }"
-                >
-                    <img src="../../assets/ClassIcon/classIconAll.png" class="w-100" alt="img" />
-                </a>
-                <a
-                    href="#"
-                    @click.prevent="classSort('配件')"
-                    class="parts_box sort_box mb-3 mx-2 rounded-circle"
-                    :class="{ sort_active: class_active == '配件' }"
-                >
-                    <img src="../../assets/ClassIcon/classIconAccessories.png" class="w-100" alt="img" />
-                </a>
-                <a
-                    href="#"
-                    @click.prevent="classSort('手機')"
-                    class="phone_box sort_box mb-3 mx-2 rounded-circle"
-                    :class="{ sort_active: class_active == '手機' }"
-                >
-                    <img src="../../assets/ClassIcon/classIconPhone.png" class="w-100" alt="img" />
-                </a>
-                <a
-                    href="#"
-                    @click.prevent="classSort('穿戴')"
-                    class="watch_box sort_box mb-3 mx-2 rounded-circle"
-                    :class="{ sort_active: class_active == '穿戴' }"
-                >
-                    <img src="../../assets/ClassIcon/classIconWear.png" class="w-100" alt="img" />
-                </a>
-                <a
-                    href="#"
-                    @click.prevent="classSort('耳機')"
-                    class="headset_box sort_box mb-3 mx-2 rounded-circle"
-                    :class="{ sort_active: class_active == '耳機' }"
-                >
-                    <img src="../../assets/ClassIcon/classIconHeadset.png" class="w-100" alt="img" />
-                </a>
-                <a
-                    href="#"
-                    @click.prevent="classSort('生活')"
-                    class="life_box sort_box mb-3 mx-2 rounded-circle"
-                    :class="{ sort_active: class_active == '生活' }"
-                >
-                    <img src="../../assets/ClassIcon/classIconLift.png" class="w-100" alt="img" />
-                </a>
+            <nav class="sort_list d-flex justify-content-center">
+                <section class="d-flex justify-content-center flex-wrap">
+                    <a
+                        href="#"
+                        @click.prevent="classSort('全部')"
+                        class="all_box sort_box mb-3 mx-2 mx-md-3 rounded-circle"
+                        :class="{ sort_active: class_active == '全部' }"
+                    >
+                        <img src="../../assets/ClassIcon/classIconAll.png" class="w-100" alt="img" />
+                    </a>
+                    <a
+                        href="#"
+                        @click.prevent="classSort('配件')"
+                        class="sort_box mb-3 mx-2 mx-md-3 rounded-circle"
+                        :class="{ sort_active: class_active == '配件' }"
+                    >
+                        <img src="../../assets/ClassIcon/classIconAccessories.png" class="w-100" alt="img" />
+                    </a>
+                    <a
+                        href="#"
+                        @click.prevent="classSort('手機')"
+                        class="sort_box mb-3 mx-2 mx-md-3 rounded-circle"
+                        :class="{ sort_active: class_active == '手機' }"
+                    >
+                        <img src="../../assets/ClassIcon/classIconPhone.png" class="w-100" alt="img" />
+                    </a>
+                    <a
+                        href="#"
+                        @click.prevent="classSort('穿戴')"
+                        class="sort_box mb-3 mx-2 mx-md-3 rounded-circle"
+                        :class="{ sort_active: class_active == '穿戴' }"
+                    >
+                        <img src="../../assets/ClassIcon/classIconWear.png" class="w-100" alt="img" />
+                    </a>
+                    <a
+                        href="#"
+                        @click.prevent="classSort('耳機')"
+                        class="sort_box mb-3 mx-2 mx-md-3 rounded-circle"
+                        :class="{ sort_active: class_active == '耳機' }"
+                    >
+                        <img src="../../assets/ClassIcon/classIconHeadset.png" class="w-100" alt="img" />
+                    </a>
+                    <a
+                        href="#"
+                        @click.prevent="classSort('生活')"
+                        class="sort_box mb-3 mx-2 mx-md-3 rounded-circle"
+                        :class="{ sort_active: class_active == '生活' }"
+                    >
+                        <img src="../../assets/ClassIcon/classIconLift.png" class="w-100" alt="img" />
+                    </a>
+                </section>
             </nav>
 
             <p
@@ -150,29 +152,29 @@
             >
                 商品陸續上架中...
             </p>
-            <ul class="row product_list justify-content-around card-group" v-if="is_loading == false">
-                <li class="col-lg-2 col-md-4 col-6 mx-lg-1 mx-0" style="margin-bottom:100px" v-for="item in product_data_class" :key="item.key">
-                    <router-link class="text-dark" href="#" :to="'/productcontent/' + item.id">
-                        <div class="card border-0 h-100">
-                            <img :src="item.imageUrl" class="card_img" width="140px" alt="..." />
-                            <div class="card-body position-relative">
-                                <h6 class="card-title mb-0">{{ item.title }}</h6>
-                                <p class="mb-3 text-black-50">{{ item.category }}</p>
-                                <div class="card-text mb-3 d-flex flex-wrap">
-                                    <p class="text-danger" style="text-decoration: line-through">{{
-                                        item.origin_price | currency
-                                    }}</p>
-                                    <p class="h5 text-primary">{{ item.price | currency }}</p>
-                                </div>
-                                <div class="text-right position-absolute" style="bottom:10px;right:15px">
-                                    <a href="#" class="text-info">更多資訊..</a>
-                                </div>
+
+            <ul class="product_list_group d-flex justify-content-center flex-wrap">
+                <li class="product_list mx-2 mx-sm-3 mx-md-4" v-for="item in product_data_class" :key="item.key">
+                    <router-link class="text-dark d-flex flex-column h-100" href="#" :to="'/productcontent/' + item.id">
+                        <img :src="item.imageUrl" class="" alt="..." />
+                        <div class="product_content pt-2 position-relative">
+                            <h6 class="mb-0 ">{{ item.title }}</h6>
+                            <p class="mb-3 text-black-50">{{ item.category }}</p>
+                            <div class="mb-5 d-flex flex-wrap">
+                                <p class="text-danger" style="text-decoration: line-through">
+                                    {{ item.origin_price | currency }}
+                                </p>
+                                <p class="h5 text-primary">{{ item.price | currency }}</p>
+                            </div>
+                            <div class="text-right pb-2 pr-3 position-absolute" style="right:0;bottom:0;">
+                                <a href="#" class="text-info">更多資訊..</a>
                             </div>
                         </div>
                     </router-link>
                 </li>
             </ul>
-            <nav aria-label="Page navigation example">
+
+            <nav aria-label="Page navigation example" v-if="class_active=='全部'">
                 <ul class="pagination justify-content-center">
                     <li class="page-item" :class="{ disabled: !pages.has_pre }">
                         <a
@@ -231,7 +233,7 @@ export default {
     },
     methods: {
         productData: function(page = 1) {
-
+            
             //get allproducts data
             const all_api = () => {
                 return vm.$http.get(`${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/products/all`);
@@ -244,7 +246,7 @@ export default {
             const vm = this;
             vm.is_loading = true;
 
-            if (vm.$route.query.class != undefined ) {
+            if (vm.$route.query.class != undefined) {
                 vm.class_active = vm.$route.query.class;
             }
 
@@ -264,76 +266,34 @@ export default {
                     })
                 )
                 .catch(error => {
-                    console.error(error);
+                    console.log(error);
                 });
-            vm.animLoading();
-        },
-        animLoading: function() {
 
-            //loading animation
-            const vm = this;
             setTimeout(function() {
                 vm.is_loading = false;
                 vm.classSort(vm.class_active);
-            }, 1000);
+            }, 1500);
+
         },
         classSort: function(product_class) {
 
             //sort products data
+            const vm = this;
             const data = this.product_data_all;
 
-            switch (product_class) {
-                case "全部":
-                    this.class_active = "全部";
-                    this.product_data_class = this.product_data_list;
-                    break;
-                case "配件":
-                    this.class_active = "配件";
-                    this.product_data_class = [];
-                    data.forEach(el => {
-                        if (el.category == "配件") {
-                            this.product_data_class.push(el);
-                        }
-                    });
-                    break;
-                case "手機":
-                    this.class_active = "手機";
-                    this.product_data_class = [];
-                    data.forEach(el => {
-                        if (el.category == "手機") {
-                            this.product_data_class.push(el);
-                        }
-                    });
-                    break;
-                case "穿戴":
-                    this.class_active = "穿戴";
-                    this.product_data_class = [];
+            vm.product_data_class = [];
+            vm.class_active = product_class;
 
-                    data.forEach(el => {
-                        if (el.category == "穿戴") {
-                            this.product_data_class.push(el);
-                        }
-                    });
-                    break;
-                case "耳機":
-                    this.class_active = "耳機";
-                    this.product_data_class = [];
-                    data.forEach(el => {
-                        if (el.category == "耳機") {
-                            this.product_data_class.push(el);
-                        }
-                    });
-                    break;
-                case "生活":
-                    this.class_active = "生活";
-                    this.product_data_class = [];
-                    data.forEach(el => {
-                        if (el.category == "生活") {
-                            this.product_data_class.push(el);
-                        }
-                    });
-                    break;
+            if (product_class == "全部") {
+                vm.product_data_class = vm.product_data_list;
+            } else {
+                data.forEach(el => {
+                    if (el.category == product_class) {
+                        vm.product_data_class.push(el);
+                    }
+                });
             }
+
         },
         cartData: function() {
 
@@ -368,14 +328,19 @@ export default {
                     vm.del_loading = false;
                 }
             });
+
         },
     },
     created() {
+
         this.productData();
         this.cartData();
+
     },
     mounted() {
+
         $(".carousel").carousel({ interval: 3000 });
+
     },
     components: {
         indexnavbar,

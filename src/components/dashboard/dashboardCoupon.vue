@@ -1,35 +1,36 @@
 <template>
-  <div>
-    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
+  <main>
+    <aside class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-dizzy"></i></p>
         <p>錯誤!請重新整理或重新登入</p>
       </div>
-    </div>
+    </aside>
 
-    <div class="alert_delete" v-if="alert_delete == true">
+    <aside class="alert_delete" v-if="alert_delete == true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-sad-cry"></i></p>
         <p class="text-center">確定要刪除嗎?</p>
         <div class="alert_delete_btn d-flex justify-content-around mt-3">
           <a href="" class="btn btn-light rounded-pill mr-3" @click.prevent="alert_delete =false">取消</a>
-          <a href="" class="btn btn-light rounded-pill" @click.prevent="del_coupon()">確定</a>
+          <a href="" class="btn btn-light rounded-pill" @click.prevent="couponDelete()">確定</a>
         </div>
       </div>
-    </div>
-    <div class="alert_delete_bg"  v-if="alert_delete == true"></div>
+    </aside>
+    <aside class="alert_delete_bg"  v-if="alert_delete == true"></aside>
 
-    <div class="container-fluid">
-      <div class="row">
+    <section class="container-fluid">
+      <article class="row">
         <dashboardmenu></dashboardmenu>
-        <div class="col-12 col-sm-10 deashboard_content pt-5 px-1 pl-sm-5">
-          <div class="text-content d-flex  flex-column flex-sm-row align-items-center pb-3">
+        <section class="col-12 col-sm-10 deashboard_content pt-5 px-3 pl-sm-4 mb-5 mb-sm-0">
+          <article class="text-content d-flex  flex-column flex-sm-row align-items-center pb-3">
             <h1 class="mr-3">後台管理</h1>
             <p class="h5 px-3 py-2 title_text">優惠券</p>
-          </div>
-          <div class="table-responsive mt-5 px-0 px-sm-5">
-            <a href="#" class="text-right btn btn-outline-dark mb-4" @click.prevent="open_coupon_model(true)">建立優惠券</a>
-            <table class="table table-striped table-sm table_lsit">
+          </article>
+
+          <article class="table-responsive mt-5 px-0 px-sm-5">
+            <a href="#" class="text-right btn btn-outline-dark mb-4" @click.prevent="openModel(true)">建立優惠券</a>
+            <table class="table table-striped table-sm table_lsit pd-2">
               <thead>
                 <tr>
                   <th>名稱</th>
@@ -53,21 +54,25 @@
                     <a
                       href="#"
                       class="btn btn-outline-primary btn-sm"
-                      @click.prevent="open_coupon_model(false,item)"
+                      @click.prevent="openModel(false,item)"
                     >編輯</a>
                   </td>
                   <td>
                     <a
                       href="#"
                       class="btn btn-sm btn_del text-danger p-0"
-                      @click.prevent="del_model_event(item.id)"
+                      @click.prevent="delAlertModel(item.id)"
                     >
                       <i class="far fa-trash-alt"></i>
                     </a>
                   </td>
                 </tr>
               </tbody>
-              <p class="h4 text-black-50 loading_list" v-if="sm_loading == false"><i class="fas fa-circle-notch fa-spin"></i></p>
+              <tbody v-if="sm_loading == true" >
+                <td>
+                  <p class="h4 text-black-50" ><i class="fas fa-circle-notch fa-spin"></i></p>
+                </td>
+              </tbody>
             </table>
             <nav aria-label="Page navigation example" v-if="pages.total_pages >1">
               <ul class="pagination ">
@@ -86,13 +91,13 @@
                 </li>
               </ul>
             </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+          </article>
+        </section>
+      </article>
+    </section>
 
     <!-- add_model -->
-    <div
+    <section
       class="modal fade"
       id="couponModal"
       tabindex="-1"
@@ -100,8 +105,8 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content border-0">
+      <article class="modal-dialog modal-lg" role="document">
+        <section class="modal-content border-0">
           <div class="modal-header bg-dark text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增優惠券</span>
@@ -165,12 +170,12 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click.prevent="add_coupon">確認</button>
+            <button type="button" class="btn btn-primary" @click.prevent="couponAdd">確認</button>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </section>
+      </article>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -183,22 +188,25 @@ export default {
     return {
       new_coupon:{},
       coupon_data_list:[],
-      is_new:false,
       pages: {},
-      sm_loading:false,
+      delete_id:'',
+      is_new:false,
+      sm_loading:true,
       error_anim:false,
       alert_delete:false,
-      delete_id:'',
+      
     };
   },
   methods: {
     couponsData:function(page=1){
+
+      //get coupons data
       let api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupons?page=${page}`;
       const vm = this;
       
       this.$http.get(api).then(response => {
           if(response.data.success){
-            vm.sm_loading = true;
+            vm.sm_loading = false;
             vm.coupon_data_list=response.data.coupons;
             vm.pages = response.data.pagination;
           }else{
@@ -206,17 +214,29 @@ export default {
           }
         });
     },
-    open_coupon_model:function(is_new,item){
-      if(is_new ==true){
-        this.new_coupon ={};
-        this.is_new =true;
-      }else{
-        this.new_coupon =item;
-        this.is_new =false;
-      }
-      $('#couponModal').modal('show');
+    delAlertModel:function(id){
+
+      //open delmodel
+      this.delete_id = id;
+      this.alert_delete = true;
+
     },
-    add_coupon:function(){
+    couponDelete:function(){
+
+      //del coupon
+      const api= `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupon/${this.delete_id}`;
+      const vm = this;
+
+      this.$http.delete(api).then(response => {
+        if(response.data.success){
+          vm.couponsData();
+          vm.alert_delete = false;
+        }
+      })
+    },
+    couponAdd:function(){
+
+      //add or revise coupon
       let api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupon`;
       const vm = this;
       
@@ -240,25 +260,23 @@ export default {
           }
         });
         }
-      
       $('#couponModal').modal('hide');
-    },
-    del_model_event:function(id){
-      this.delete_id = id;
-      this.alert_delete = true;
 
     },
-    del_coupon:function(){
-      const api= `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupon/${this.delete_id}`;
-      const vm = this;
+    openModel:function(is_new,item){
 
-      this.$http.delete(api).then(response => {
-        if(response.data.success){
-          vm.couponsData();
-          vm.alert_delete = false;
-        }
-      })
-    }
+      //openmodel 判斷是否新增
+      if(is_new ==true){
+        this.new_coupon ={};
+        this.is_new =true;
+      }else{
+        this.new_coupon =item;
+        this.is_new =false;
+      }
+      $('#couponModal').modal('show');
+
+    },
+
   },
   components: {
     dashboardmenu

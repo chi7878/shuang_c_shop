@@ -1,10 +1,10 @@
 <template>
-    <header class="col-12 col-sm-2 deashboard_menu text-center p-0 position-relative ">
+    <header class="col-12 col-sm-2  deashboard_menu text-center p-0 position--relative ">
         <section class="">
-            <img src="../../../assets/shopLogo.png" class="w-50" alt="" />
-            <div class="mt-5">
+            <img src="../../../assets/shopLogo.png" class="w-25 w-sm-50" alt="" />
+            <div class="mt-3 mt-sm-5">
                 <p class="text-white-50 mb-4">管理員</p>
-                <ul class="nav flex-column">
+                <ul class="nav flex-row flex-sm-column justify-content-around">
                     <li class="nav-item mb-3">
                         <router-link class="nav-link dashboard_btn p-0 text-white" to="/dashoard">
                             產品列表

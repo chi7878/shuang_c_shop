@@ -1,35 +1,35 @@
 <template>
-  <div>
-    <div class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
+  <main>
+    <aside class="alert_message_error" :class="{alert_message_error_anim:error_anim == true}" v-if="error_anim == true">
       <div class="text-dark">
         <p class="h1 text-center"><i class="far fa-dizzy"></i></p>
         <p>錯誤!請重新整理或重新登入</p>
       </div>
-    </div>
+    </aside>
 
-    <div class="alert_delete" v-if="alert_delete == true">
-      <div class="text-dark">
-        <p class="h1 text-center"><i class="far fa-sad-cry"></i></p>
-        <p class="text-center">確定要刪除嗎?</p>
-        <div class="alert_delete_btn d-flex justify-content-around mt-3">
+    <aside class="alert_delete py-4 " v-if="alert_delete == true">
+      <section class="text-dark text-center">
+        <h1><i class="far fa-sad-cry"></i></h1>
+        <p class="">確定要刪除嗎?</p>
+        <div class="alert_delete_btn d-flex justify-content-center mt-3">
           <a href="" class="btn btn-light rounded-pill mr-3" @click.prevent="alert_delete =false">取消</a>
           <a href="" class="btn btn-light rounded-pill" @click.prevent="productDelete()">確定</a>
         </div>
-      </div>
-    </div>
-    <div class="alert_delete_bg"  v-if="alert_delete == true"></div>
+      </section>
+    </aside>
+    <aside class="alert_delete_bg"  v-if="alert_delete == true"></aside>
 
-    <div class="container-fluid">
-      <div class="row">
+    <section class="container-fluid">
+      <article class="row">
         <dashboardmenu></dashboardmenu>
-        <div class="col-12 col-sm-10 deashboard_content pt-5 px-1 pl-sm-5">
-          <div class="text-content d-flex  flex-column flex-sm-row align-items-center pb-3">
+        <section class="col-12 col-sm-10 deashboard_content pt-5 px-3 pl-sm-4 mb-5 mb-sm-0">
+          <article class="text-content d-flex  flex-column flex-sm-row align-items-center pb-3">
             <h1 class="mr-3">後台管理</h1>
             <p class="h5 px-3 py-2 title_text">產品列表</p>
-          </div>
-          <div class="table-responsive mt-5 px-0 px-sm-5">
+          </article>
+          <article class="table-responsive mt-5 px-0 px-sm-5" >
             <a href="" class="text-right btn btn-outline-dark mb-4" @click.prevent="openModel(true)">建立新產品</a>
-            <table class="table table-striped table-sm table_lsit">
+            <table class="table table-striped table-sm table_lsit pd-2">
               <thead>
                 <tr class="text-primary">
                   <th width="120" class="text-center">分類</th>
@@ -52,27 +52,24 @@
                     <span v-else class="text-danger">未啟用</span>
                   </td>
                   <td class="text-center">
-                    <a
-                      href
-                      class="btn btn-outline-primary btn-sm"
-                      @click.prevent="openModel(false,item)"
-                    >編輯</a>
+                    <a href="#" class="btn btn-outline-primary btn-sm" @click.prevent="openModel(false,item)">
+                      編輯
+                    </a>
                   </td>
                   <td>
-                    <a
-                      href="#"
-                      class="btn btn-sm btn_del text-danger p-0"
-                      @click.prevent="delAlertModel(item.id)"
-                    >
+                    <a  href="#"  class="btn btn-sm btn_del text-danger p-0" @click.prevent="delAlertModel(item.id)">
                       <i class="far fa-trash-alt"></i>
                     </a>
                   </td>
                 </tr>
               </tbody>
-              <p class="h4 text-black-50 loading_list" v-if="sm_loading == false"><i class="fas fa-circle-notch fa-spin"></i></p>
-            </table>
-            <nav aria-label="Page navigation example">
-              <ul class="pagination ">
+              <tbody v-if="sm_loading == true" >
+                <td>
+                  <p class="h4 text-black-50" ><i class="fas fa-circle-notch fa-spin"></i></p>
+                </td>
+              </tbody>            </table>
+            <nav aria-label="Page navigation example ">
+              <ul class="pagination mb-5">
                 <li class="page-item" :class="{disabled:!pages.has_pre}">
                   <a class="page-link" href="#" aria-label="Previous" @click.prevent="productsData(pages.current_page-1)">
                     <i class="fas fa-angle-left"></i>
@@ -88,12 +85,13 @@
                 </li>
               </ul>
             </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+          </article>
+        </section>
+      </article>
+    </section>
 
-    <div
+    <!-- add_model -->
+    <section
       class="modal fade"
       id="productModal"
       tabindex="-1"
@@ -101,8 +99,8 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content border-0">
+      <article class="modal-dialog modal-lg" role="document">
+        <section class="modal-content border-0">
           <div class="modal-header bg-dark text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增產品</span>
@@ -138,8 +136,9 @@
                   />
                 </div>
                 <img
-                  img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
+                  :src="new_product.imageUrl"
                   class="img-fluid"
+                  width="50%"
                   alt
                 />
               </div>
@@ -209,17 +208,8 @@
                     class="form-control"
                     id="description"
                     placeholder="請輸入產品描述"
+                    style="height:100px"
                     v-model="new_product.description"
-                  ></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="content">說明內容</label>
-                  <textarea
-                    type="text"
-                    class="form-control"
-                    id="content"
-                    placeholder="請輸入產品說明內容"
-                    v-model="new_product.content"
                   ></textarea>
                 </div>
                 <div class="form-group">
@@ -242,10 +232,10 @@
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
             <button type="button" class="btn btn-primary"  :class="{disabled:img_loading == true}" @click="productAdd">確認</button>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </section>
+      </article>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -258,46 +248,55 @@ export default {
     return {
       new_product: {},
       product_data_list: [],
-      is_new: false,
       pages: {},
-      sm_loading:false,
+      delete_id:'',
+      is_new: false,
+      sm_loading:true,
       img_loading:false,
       error_anim:false,
       alert_delete:false,
-      delete_id:'',
     };
   },
   methods: {
     productsData: function(page=1) {
+      
+      //get allproducts data
       const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/products?page=${page}`;
       const vm = this;
 
-      this.$http.get(api).then(response => {
-
+      vm.$http.get(api).then(response => {
         if(response.data.success){
-          vm.sm_loading = true;
+          vm.sm_loading = false;
           vm.product_data_list = response.data.products;
           vm.pages = response.data.pagination;
         }else{
           vm.error_anim = true;
         }
       });
+      
     },
     delAlertModel:function(id){
+
+      //open delmodel
       this.delete_id = id;
       this.alert_delete = true;
 
     },
     productDelete: function() {
+      
+      //del product
       const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/product/${this.delete_id}`;
       const vm = this;
 
-      this.$http.delete(api).then(response => {
+      vm.$http.delete(api).then(response => {
         vm.productsData();
         vm.alert_delete = false;
       });
+
     },
     productAdd: function() {
+      
+      //add or revise prodoct
       let api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/product`;
       const vm = this;
 
@@ -316,16 +315,19 @@ export default {
           if (response.data.success) {
             vm.new_product = {};
             vm.productsData();
+            
           } else {
             vm.error_anim = true;
           }
         });
       }
-
       $("#productModal").modal("hide");
+
     },
-    openModel: function(is_new, item) {
-      if (is_new == true) {
+    openModel: function(isnew, item) {
+
+      //openmodel 判斷是否新增
+      if (isnew) {
         this.new_product = {};
         this.is_new = true;
       } else {
@@ -333,8 +335,11 @@ export default {
         this.is_new = false;
       }
       $("#productModal").modal("show");
+
     },
     updataImg: function() {
+
+      //updata image
       const vm = this;
       const img = this.$refs.files.files[0];
       const formData = new FormData();

@@ -64,80 +64,20 @@
                         <p class="hot_title_en text-small text-black-50">hot product</p>
                     </div>
 
-                    <ul class="hot_list d-flex justify-content-center flex-wrap">
-                        <li class="mx-1 mx-md-4">
-                            <router-link to="/productcontent/-Li3ug7PpOXsVMUzfJHo">
-                                <div class="card " >
-                                    <img
-                                        src="../assets/product/HotProduct01.png"
-                                        class="card_img"
-                                        width="200px"
-                                        alt="..."
-                                    />
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">APPLE AirPods</h5>
-                                        <p class="card-text mb-3 text-danger" style="text-decoration: line-through">
-                                            $5490
+                    <ul class="product_list_group d-flex justify-content-center flex-wrap">
+                        <li class="product_list mx-2 mx-sm-3 mx-md-4" v-for="(item,key) in hot_product" :key="item.id">
+                            <router-link
+                                class="text-dark d-flex flex-column h-100"
+                                href="#"
+                                :to="'/productcontent/'+item.id"
+                            >
+                                <img :src="require('../assets/product/HotProduct0'+(key+1) +'.png')" alt="..."/>
+                                <div class="pt-2 position-relative text-center pb-4" style="margin-top:180px">
+                                    <h6 class="mb-0 ">{{item.name}}</h6>
+                                        <p class="text-danger my-2" style="text-decoration: line-through">
+                                            {{item.price}}
                                         </p>
-                                        <a class="btn btn-light rounded-pill px-5 py-0">more</a>
-                                    </div>
-                                </div>
-                            </router-link>
-                        </li>
-                        <li class="mx-1 mx-md-4">
-                            <router-link to="/productcontent/-LiJGtR-6sLDIek3r1bd">
-                                <div class="card " >
-                                    <img
-                                        src="../assets/product/HotProduct02.png"
-                                        class="card_img"
-                                        width="200px"
-                                        alt="..."
-                                    />
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">ASUS ZenFone6</h5>
-                                        <p class="card-text mb-3 text-danger" style="text-decoration: line-through">
-                                            $5490
-                                        </p>
-                                        <a class="btn btn-light rounded-pill px-5 py-0">more</a>
-                                    </div>
-                                </div>
-                            </router-link>
-                        </li>
-                        <li class="mx-1 mx-md-4">
-                            <router-link to="/productcontent/-LiJGwKtPuvw82bExub_">
-                                <div class="card " >
-                                    <img
-                                        src="../assets/product/HotProduct03.png"
-                                        class="card_img"
-                                        width="200px"
-                                        alt="..."
-                                    />
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Xiaomi 小米手環4</h5>
-                                        <p class="card-text mb-3 text-danger" style="text-decoration: line-through">
-                                            $5490
-                                        </p>
-                                        <a hrf class="btn btn-light rounded-pill px-5 py-0">more</a>
-                                    </div>
-                                </div>
-                            </router-link>
-                        </li>
-                        <li class="mx-1 mx-md-4">
-                            <router-link to="/productcontent/-Ljylaq-HYasQjdq0jy2">
-                                <div class="card " >
-                                    <img
-                                        src="../assets/product/HotProduct04.png"
-                                        class="card_img"
-                                        width="200px"
-                                        alt="..."
-                                    />
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Xiaomi 小米AI音箱</h5>
-                                        <p class="card-text mb-3 text-danger" style="text-decoration: line-through">
-                                            $5490
-                                        </p>
-                                        <a class="btn btn-light rounded-pill px-5 py-0">more</a>
-                                    </div>
+                                        <a class="btn  rounded-pill text-secondary">more</a>
                                 </div>
                             </router-link>
                         </li>
@@ -185,7 +125,28 @@ export default {
     name: "HelloWorld",
     data() {
         return {
-            msg: "",
+            hot_product:[ 
+                {
+                    id:"Li3ug7PpOXsVMUzfJHo",
+                    name:"APPLE AirPods",
+                    price:"$6490",
+                },
+                {
+                    id:"LiJGtR-6sLDIek3r1bd",
+                    name:"ZenFone6",
+                    price:"$17990",
+                },
+                {
+                    id:"LiJGwKtPuvw82bExub_",
+                    name:"小米手環4",
+                    price:"$865",
+                },
+                {
+                    id:"Ljylaq-HYasQjdq0jy2",
+                    name:"Xiaomi 小米AI音箱",
+                    price:"$1490",
+                }                
+            ]
         };
     },
     components: {
