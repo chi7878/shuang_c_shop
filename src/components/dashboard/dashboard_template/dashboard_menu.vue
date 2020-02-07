@@ -1,5 +1,5 @@
 <template>
-    <header class="col-12 col-sm-2  deashboard_menu text-center p-0 position--relative ">
+    <header class="col-12 col-sm-2  deashboard_menu text-center p-0  ">
         <section class="">
             <img src="../../../assets/shopLogo.png" class="w-25 w-sm-50" alt="" />
             <div class="mt-3 mt-sm-5">

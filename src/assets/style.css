@@ -509,6 +509,11 @@ ul {
     border-radius: 50px;
 }
 
+.table-responsive{
+    box-shadow: #6d6d6d30 0px 5px 10px 0.5px;
+    border-radius: 2rem;
+}
+
 .table-responsive .btn_del{
     border-radius: 50px;
     position:relative;
@@ -999,3 +1004,21 @@ table{
     z-index: -1;
 }
 
+/* das */
+.statistic>li{
+    border-radius: 2rem;
+    width: 250px;
+    height: 100px;
+    box-shadow: #6d6d6d30 0px 5px 10px 0.5px;
+    color: #4c4c4c;
+}
+
+.text_small{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.text_big{
+    font-size: 35px;
+    font-weight: 700;
+}

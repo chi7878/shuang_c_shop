@@ -12,14 +12,15 @@
 		</aside>
 
 		<section class="container-fluid">
-			<article class="row">
+			<article class="row align-self-stretch">
 				<dashboardmenu></dashboardmenu>
 				<section class="col-12 col-sm-10 deashboard_content pt-5 px-3 pl-sm-4 mb-5 mb-sm-0">
 					<article class="text-content d-flex  flex-column flex-sm-row align-items-center pb-3">
 						<h1 class=" mr-3">後台管理</h1>
 						<p class="h5 px-3 py-2 title_text">產品訂單</p>
 					</article>
-					<article class="table-responsive mt-5 px-0 px-sm-5">
+        <dashboardstatistic></dashboardstatistic>
+        <article class="table-responsive mt-5 p-2 px-sm-5 py-5">
 						<table class="table table-striped table-sm table_lsit">
 							<thead>
 								<tr>
@@ -178,6 +179,7 @@
 
 <script>
 import dashboardmenu from "./dashboard_template/dashboard_menu";
+import dashboardstatistic from "./dashboard_template/dashboard_statistic";
 import $ from "jquery";
 
 export default {
@@ -231,7 +233,8 @@ export default {
 		},
 	},
 	components: {
-		dashboardmenu,
+    dashboardmenu,
+    dashboardstatistic
 	},
 	created() {
 		this.orderData();

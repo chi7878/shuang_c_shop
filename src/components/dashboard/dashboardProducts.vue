@@ -27,7 +27,7 @@
             <h1 class="mr-3">後台管理</h1>
             <p class="h5 px-3 py-2 title_text">產品列表</p>
           </article>
-          <article class="table-responsive mt-5 px-0 px-sm-5" >
+          <article class="table-responsive mt-5 p-2 px-sm-5 py-5" >
             <a href="" class="text-right btn btn-outline-dark mb-4" @click.prevent="openModel(true)">建立新產品</a>
             <table class="table table-striped table-sm table_lsit pd-2">
               <thead>
