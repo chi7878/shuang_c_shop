@@ -481,13 +481,14 @@ ul {
 
 .deashboard_menu{
     background-color: #6d7a84;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 @media (max-width:576px){
     .deashboard_menu{
         height: 10%;
         width: 100vw;
+        min-height: 0;
     }
 }
 
@@ -688,6 +689,12 @@ table{
     }
     .product_text{
         width: 90%;
+    }
+}
+
+@media screen and (max-width:576px){
+    .product_picture img{
+        width: 200px;
     }
 }
 

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ul class="statistic d-flex mt-5 justify-content-start flex-wrap">
+        <ul class="statistic d-none d-sm-flex mt-4 justify-content-center justify-content-md-start flex-wrap">
             <li class="mx-3 mb-4 px-3 py-2">
                 <p class="text-secondary">總訂單數</p>
                 <hr class="my-1">

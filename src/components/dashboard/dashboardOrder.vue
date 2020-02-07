@@ -19,8 +19,8 @@
 						<h1 class=" mr-3">後台管理</h1>
 						<p class="h5 px-3 py-2 title_text">產品訂單</p>
 					</article>
-        <dashboardstatistic></dashboardstatistic>
-        <article class="table-responsive mt-5 p-2 px-sm-5 py-5">
+					<dashboardstatistic></dashboardstatistic>
+					<article class="table-responsive mt-3 p-2 px-sm-3 py-4">
 						<table class="table table-striped table-sm table_lsit">
 							<thead>
 								<tr>
@@ -199,20 +199,20 @@ export default {
 		orderData: function(page = 1) {
 
       //get order data
-			const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/orders?page=${page}`;
-			const vm = this;
+		const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/orders?page=${page}`;
+		const vm = this;
 
-			this.$http.get(api).then(response => {
-				if (response.data.success) {
-					vm.sm_loading = false;
-					vm.order_data_list = response.data.orders;
-					vm.order_data_list.pop();
-					vm.pages = response.data.pagination;
-				} else {
-					vm.error_anim = true;
-				}
-      });
-      
+		this.$http.get(api).then(response => {
+			if (response.data.success) {
+				vm.sm_loading = false;
+				vm.order_data_list = response.data.orders;
+				vm.order_data_list.pop();
+				vm.pages = response.data.pagination;
+			} else {
+				vm.error_anim = true;
+			}
+		});
+		
 		},
 		orderContent: function(id) {
 

@@ -27,6 +27,7 @@
             <i class="fas fa-shopping-cart"></i>
         </router-link>
 
+        <!-- cart model -->
         <aside class="cart_btn  d-sm-block d-none">
             <article class="cart_box">
                 <p class="cart_link"><i class="fas fa-shopping-cart mr-4"></i>購物車</p>
@@ -60,7 +61,7 @@
         </aside>
         <section class="container-fluid">
             <div class="row product_container justify-content-between align-items-center">
-                <div class="col-lg-5 product_picture">
+                <div class="col-lg-5 product_picture mr-3 m-lg-0">
                     <router-link to="/allproducts" class="text-black-50" style="font-size: 20px;"
                         ><i class="fas fa-angle-left mr-1"></i>BACK</router-link
                     >

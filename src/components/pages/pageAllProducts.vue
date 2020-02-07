@@ -21,6 +21,7 @@
             <i class="fas fa-shopping-cart text-white"></i>
         </router-link>
 
+        <!-- cart- model -->
         <div class="cart_btn d-sm-block d-none">
             <div class="cart_box">
                 <p class="cart_link"><i class="fas fa-shopping-cart mr-4"></i>購物車</p>
@@ -54,6 +55,7 @@
                 </div>
             </div>
         </div>
+
         <main class="container">
             <section
                 id="carouselExampleControls"
@@ -146,10 +148,8 @@
                 </section>
             </nav>
 
-            <p
-                v-if="product_data_class.length == 0 && is_loading == false"
-                class="mb-5 mt-5 h5 text-weight-bold text-center"
-            >
+            <p v-if="product_data_class.length == 0 && is_loading == false"
+            class="mb-5 mt-5 h5 text-weight-bold text-center">
                 商品陸續上架中...
             </p>
 

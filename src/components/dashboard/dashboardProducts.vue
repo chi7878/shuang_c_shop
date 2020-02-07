@@ -27,7 +27,8 @@
             <h1 class="mr-3">後台管理</h1>
             <p class="h5 px-3 py-2 title_text">產品列表</p>
           </article>
-          <article class="table-responsive mt-5 p-2 px-sm-5 py-5" >
+          <dashboardstatistic></dashboardstatistic>
+          <article class="table-responsive mt-3 p-2 px-sm-3 py-4" >
             <a href="" class="text-right btn btn-outline-dark mb-4" @click.prevent="openModel(true)">建立新產品</a>
             <table class="table table-striped table-sm table_lsit pd-2">
               <thead>
@@ -69,7 +70,7 @@
                 </td>
               </tbody>            </table>
             <nav aria-label="Page navigation example ">
-              <ul class="pagination mb-5">
+              <ul class="pagination mb-2">
                 <li class="page-item" :class="{disabled:!pages.has_pre}">
                   <a class="page-link" href="#" aria-label="Previous" @click.prevent="productsData(pages.current_page-1)">
                     <i class="fas fa-angle-left"></i>
@@ -240,6 +241,7 @@
 
 <script>
 import dashboardmenu from "./dashboard_template/dashboard_menu";
+import dashboardstatistic from "./dashboard_template/dashboard_statistic";
 import $ from "jquery";
 
 export default {
@@ -305,6 +307,7 @@ export default {
           if (response.data.success) {
             vm.new_product = {};
             vm.productsData();
+            $("#productModal").modal("hide");
           } else {
             vm.error_anim = true;
           }
@@ -315,13 +318,12 @@ export default {
           if (response.data.success) {
             vm.new_product = {};
             vm.productsData();
-            
+            $("#productModal").modal("hide");
           } else {
             vm.error_anim = true;
           }
         });
       }
-      $("#productModal").modal("hide");
 
     },
     openModel: function(isnew, item) {
@@ -363,10 +365,12 @@ export default {
     }
   },
   components: {
-    dashboardmenu
+    dashboardmenu,
+    dashboardstatistic
   },
   created() {
     this.productsData();
+    
   }
 };
 </script>
