@@ -9,7 +9,7 @@ SHUANG C 電商網站
 
 ## DEMO
 
-[https://chi7878.github.io/shuang_c_shop/dist/#/](https://chi7878.github.io/shuang_c_shop/dist/#/)
+[https://chi7878.github.io/shuang_c_shop/#/](https://chi7878.github.io/shuang_c_shop/#/)
 
 ## 網站頁面功能
 ### 前台頁面
