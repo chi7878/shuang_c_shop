@@ -58,6 +58,7 @@ export default {
             this.$http.post(api,vm.sign_data).then((response)=>{
                 if(response.data.success){
                     vm.sm_loading = false;
+                    document.cookie = `hexToken=${response['data']['token']}; expires= ${new Date(response['data']['expired'])}`;
                     vm.$router.push('/dashoard'); 
                 }else{
                     vm.warning =true;

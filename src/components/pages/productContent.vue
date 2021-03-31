@@ -109,7 +109,7 @@
                 >
                     <router-link class="text-dark d-flex flex-column h-100" href="#" :to="'/productcontent/' + item.id">
                         <img :src="item.imageUrl" alt="..." />
-                        <div class="pt-2 position-relative text-center pb-4" style="margin-top:180px">
+                        <div class="product_content pt-2 position-relative text-center pb-4" style="margin-top:180px">
                             <h6 class="mb-0 ">{{ item.title }}</h6>
                             <p class="text-danger my-2" style="text-decoration: line-through">
                                 {{ item.origin_price | currency}}

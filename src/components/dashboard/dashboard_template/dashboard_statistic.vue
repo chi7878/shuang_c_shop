@@ -51,14 +51,15 @@ export default {
     },
     methods: {
         allData: function() {
+            const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
             //get order&products data
             const products_api = () => {
-                return vm.$http.get(`${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/products/all`);
+                return vm.$http.get(`${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/products/all`, {headers: {Authorization : cookies}});
             };
             const order_api = () => {
                 const id = this.$route.params.id;
-                return vm.$http.get(`${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/orders?page=1`);
+                return vm.$http.get(`${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/orders?page=1`, {headers: {Authorization : cookies}});
             };
             const vm = this;
 

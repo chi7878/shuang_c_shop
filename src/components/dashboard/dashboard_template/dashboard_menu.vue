@@ -41,9 +41,11 @@ export default {
     methods: {
         signOut: function() {
             const api = `${process.env.VUE_APP_HTTPAPI}/logout`;
+            const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
             const vm = this;
-            this.$http.post(api).then(response => {
+            this.$http.post(api, {headers: {Authorization : cookies}}).then(response => {
                 if (response.data.success) {
+                    document.cookie = "hexToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
                     vm.$router.push("/");
                 }
             });

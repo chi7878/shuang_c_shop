@@ -39,19 +39,19 @@ SHUANG C 電商網站
 
 ### 前台網頁
 #### 首頁
-![](https://i.imgur.com/oG0dVCH.png)
+![](https://i.imgur.com/prYpcp8.jpg)
 
 #### 商品頁面
-![](https://i.imgur.com/B0TI810.png)
+![](https://i.imgur.com/R6EHLsU.jpg)
 
 #### 購物車
-![](https://i.imgur.com/NVnQ6mC.png)
+![](https://i.imgur.com/TIf30na.jpg)
 
 #### 單一商品介紹頁面
-![](https://i.imgur.com/2xvCTT9.png)
+![](https://i.imgur.com/ZR6T3fA.jpg)
 
 #### 結帳頁面
-![](https://i.imgur.com/OCFsXUz.png)
+![](https://i.imgur.com/bc5tvC1.jpg)
 
 #### 登入頁面
 ![](https://i.imgur.com/lgamklf.png)

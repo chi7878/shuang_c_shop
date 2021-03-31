@@ -203,9 +203,10 @@ export default {
 
       //get coupons data
       let api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupons?page=${page}`;
+      const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       const vm = this;
       
-      this.$http.get(api).then(response => {
+      this.$http.get(api, {headers: {Authorization : cookies}}).then(response => {
           if(response.data.success){
             vm.sm_loading = false;
             vm.coupon_data_list=response.data.coupons;
@@ -226,9 +227,10 @@ export default {
 
       //del coupon
       const api= `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupon/${this.delete_id}`;
+      const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       const vm = this;
 
-      this.$http.delete(api).then(response => {
+      this.$http.delete(api, {headers: {Authorization : cookies}}).then(response => {
         if(response.data.success){
           vm.couponsData();
           vm.alert_delete = false;
@@ -239,10 +241,11 @@ export default {
 
       //add or revise coupon
       let api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupon`;
+      const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       const vm = this;
       
       if(vm.is_new){
-        this.$http.post(api,{data:vm.new_coupon}).then(response => {
+        this.$http.post(api,{data:vm.new_coupon}, {headers: {Authorization : cookies}}).then(response => {
           if(response.data.success){
             vm.new_coupon={};
             vm.couponsData();
@@ -252,7 +255,7 @@ export default {
         });
       }else{
         api= `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/coupon/${vm.new_coupon.id}`;
-        this.$http.put(api,{data:vm.new_coupon}).then(response => {
+        this.$http.put(api,{data:vm.new_coupon}, {headers: {Authorization : cookies}}).then(response => {
           if(response.data.success){
             vm.new_coupon={};
             vm.couponsData();

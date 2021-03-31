@@ -76,19 +76,40 @@ export default new Router({
       path:'/dashoard',
       name:'dashoard',
       component: dashoard,
-      meta:{requiresAuth: true}
+      meta:{requiresAuth: true},
+      beforeEnter (to, from, next) {
+        if (document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1') === '') {
+          next('/');
+        } else {
+          next();
+        }
+      }
     },
     {
       path:'/dashboardcoupon',
       name:'dashboardcoupon',
       component: dashboardcoupon,
-      meta:{requiresAuth: true}
+      meta:{requiresAuth: true},
+      beforeEnter (to, from, next) {
+        if (document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1') === '') {
+          next('/');
+        } else {
+          next();
+        }
+      }
     },
     {
       path:'/dashboardorder',
       name:'dashboardorder',
       component: dashboardorder,
-      meta:{requiresAuth: true}
+      meta:{requiresAuth: true},
+      beforeEnter (to, from, next) {
+        if (document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1') === '') {
+          next('/');
+        } else {
+          next();
+        }
+      }
     },
     {
       path:'/checkorder',

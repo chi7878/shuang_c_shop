@@ -71,8 +71,8 @@
                                 href="#"
                                 :to="'/productcontent/'+item.id"
                             >
-                                <img :src="require('../assets/product/HotProduct0'+(key+1) +'.png')" alt="..."/>
-                                <div class="pt-2 position-relative text-center pb-4" style="margin-top:180px">
+                                <img :src="require('../assets/product/HotProduct0'+(key+1) +'.jpg')" alt="..."/>
+                                <div class="product_content pt-2 position-relative text-center pb-4" style="margin-top:180px">
                                     <h6 class="mb-0 ">{{item.name}}</h6>
                                         <p class="text-danger my-2" style="text-decoration: line-through">
                                             {{item.price}}
@@ -127,24 +127,24 @@ export default {
         return {
             hot_product:[ 
                 {
-                    id:"Li3ug7PpOXsVMUzfJHo",
-                    name:"APPLE AirPods",
-                    price:"$6490",
+                    id:"-Lk-WIpIRljnO_DU5rJV",
+                    name:"iPhone 12 Pro Max",
+                    price:"$36999",
                 },
                 {
-                    id:"LiJGtR-6sLDIek3r1bd",
-                    name:"ZenFone6",
-                    price:"$17990",
+                    id:"-MWhf0IqyOTDiw8pWPsj",
+                    name:"Apple AirPods Pro",
+                    price:"$6090",
                 },
                 {
-                    id:"LiJGwKtPuvw82bExub_",
-                    name:"小米手環4",
-                    price:"$865",
+                    id:"-Lk-Wg4eNwBAkuV7bE2J",
+                    name:"Samsung S21 Ultra",
+                    price:"$29900",
                 },
                 {
-                    id:"Ljylaq-HYasQjdq0jy2",
-                    name:"Xiaomi 小米AI音箱",
-                    price:"$1490",
+                    id:"-Ljylaq-HYasQjdq0jy2",
+                    name:"Google Nest Audio",
+                    price:"$2830",
                 }                
             ]
         };

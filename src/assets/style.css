@@ -314,40 +314,37 @@ ul {
 
 .product_list {
     width: 200px;
-    background-color: #CCD3E0;
     border-radius: 20px;
     margin-bottom:80px ;
     box-shadow: #6d6d6d50 0px 0px 10px 0.5px;
     cursor: pointer;
     transition: all .5s;
     position:relative;
+    overflow: hidden;
 }
 .product_list:hover {
     box-shadow: #6d6d6d80 0px 0px 15px 0.5px;
-    background-color: #afc9bc;
 }
 
 .product_list img{
-    width: 120px;
+    height: 150px;
     position:absolute;
     left: 50%;
-    transform: translateX(-50%);
-    top: -45px;
+    top: 24%;
+    transform: translate(-50%, -50%);
     transition: all .3s;
 }
 
-.product_list:hover img{
-    top: -60px;
-}
-
-
 .product_content{
-    background-color: white;
+    background-color: #dde9f3;
     border-radius: 0 0 20px 20px;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     margin-top: 150px;
     flex-grow: 1;
+}
+.product_list:hover .product_content{
+    background-color: #ddf3f3;
 }
 
 .product_list a:hover {
@@ -360,7 +357,7 @@ ul {
     }
 
     .product_list img{
-        width: 100px;
+        width: 100%;
     }
 
     .product_content{
@@ -629,7 +626,6 @@ table{
     display: flex;
     justify-content:center;
     align-items:center;
-    background-color: #d7f2f9;
     padding: 80px 0;
     border-radius: 0 120px 120px 0;
     position: relative;
@@ -966,9 +962,11 @@ table{
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: #f46c6c;
-    border-radius: 60px;
+    border-radius: 40px;
     width: 300px;
     box-shadow: #6d6d6d50 0px 0px 10px 0.5px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .alert_delete_bg{

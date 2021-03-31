@@ -61,7 +61,7 @@
 							</tbody>
 						</table>
 
-						<nav aria-label="Page navigation example" v-if="pages.total_pages > 1">
+						<!-- <nav aria-label="Page navigation example" v-if="pages.total_pages > 1">
 							<ul class="pagination ">
 								<li class="page-item" :class="{ disabled: !pages.has_pre }">
 									<a
@@ -92,7 +92,7 @@
 									</a>
 								</li>
 							</ul>
-						</nav>
+						</nav> -->
 					</article>
 				</section>
 			</article>
@@ -200,9 +200,10 @@ export default {
 
       //get order data
 		const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/orders?page=${page}`;
+		const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 		const vm = this;
 
-		this.$http.get(api).then(response => {
+		this.$http.get(api, {headers: {Authorization : cookies}}).then(response => {
 			if (response.data.success) {
 				vm.sm_loading = false;
 				vm.order_data_list = response.data.orders;
@@ -218,9 +219,10 @@ export default {
 
       //order content
 			const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/order/${id}`;
+			const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 			const vm = this;
 			vm.sm_loading = false;
-			this.$http.get(api).then(response => {
+			this.$http.get(api, {headers: {Authorization : cookies}}).then(response => {
 				vm.is_model = true;
 				const data = response.data.order.products;
 				if (response.data.success) {

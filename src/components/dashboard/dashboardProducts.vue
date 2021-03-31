@@ -265,8 +265,9 @@ export default {
       //get allproducts data
       const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/products?page=${page}`;
       const vm = this;
+      const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
-      vm.$http.get(api).then(response => {
+      vm.$http.get(api, {headers: {Authorization : cookies}}).then(response => {
         if(response.data.success){
           vm.sm_loading = false;
           vm.product_data_list = response.data.products;
@@ -288,9 +289,10 @@ export default {
       
       //del product
       const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/product/${this.delete_id}`;
+      const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       const vm = this;
 
-      vm.$http.delete(api).then(response => {
+      vm.$http.delete(api, {headers: {Authorization : cookies}}).then(response => {
         vm.productsData();
         vm.alert_delete = false;
       });
@@ -300,10 +302,11 @@ export default {
       
       //add or revise prodoct
       let api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/product`;
+      const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       const vm = this;
 
       if (vm.is_new) {
-        this.$http.post(api, { data: vm.new_product }).then(response => {
+        this.$http.post(api, { data: vm.new_product}, {headers: {Authorization : cookies }}).then(response => {
           if (response.data.success) {
             vm.new_product = {};
             vm.productsData();
@@ -314,7 +317,7 @@ export default {
         });
       } else {
         api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/product/${vm.new_product.id}`;
-        this.$http.put(api, { data: vm.new_product }).then(response => {
+        this.$http.put(api, { data: vm.new_product}, {headers: {Authorization : cookies }}).then(response => {
           if (response.data.success) {
             vm.new_product = {};
             vm.productsData();
@@ -347,11 +350,13 @@ export default {
       const formData = new FormData();
       formData.append("file-to-upload", img);
       const api = `${process.env.VUE_APP_HTTPAPI}/api/${process.env.VUE_APP_PATHAPI}/admin/upload`;
+      const cookies = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       vm.img_loading =true;
       this.$http
         .post(api, formData, {
           headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "multipart/form-data",
+            Authorization : cookies
           }
         })
         .then(response => {
